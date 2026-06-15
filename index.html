@@ -1,320 +1,181 @@
-{\rtf1\ansi\ansicpg1252\cocoartf2822
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-{\*\expandedcolortbl;;}
-\margl1440\margr1440\vieww11520\viewh8400\viewkind0
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Máquinas de Hielo - Don Alex</title>
+    <style>
+        :root {
+            --primary-color: #0056b3;
+            --secondary-color: #f8f9fa;
+            --text-color: #333;
+            --accent-color: #28a745;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            background-color: var(--secondary-color);
+            line-height: 1.6;
+        }
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 3rem 5%;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        .hero-subtitle {
+            font-size: 1.2rem;
+            margin-top: 10px;
+            font-weight: 300;
+        }
+        .benefits-section {
+            background: white;
+            padding: 4rem 5%;
+        }
+        .benefits-section h2 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+        }
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .benefit-item {
+            background: var(--secondary-color);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .catalog-section {
+            padding: 4rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .catalog-section h2 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 3rem;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        .card-img {
+            width: 100%;
+            height: 250px;
+            object-fit: contain;
+            background-color: #fff;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        .card-content {
+            padding: 25px;
+        }
+        .card-title {
+            margin: 0 0 10px 0;
+            font-size: 1.4rem;
+            color: var(--text-color);
+        }
+        .card-price {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            font-weight: bold;
+            margin: 0 0 20px 0;
+        }
+        .specs-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 0.95rem;
+        }
+        .specs-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            justify-content: space-between;
+        }
+        .specs-list li:last-child {
+            border-bottom: none;
+        }
+        .specs-label {
+            font-weight: 600;
+            color: #555;
+        }
+        footer {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 3rem 5%;
+        }
+        .contact-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin: 20px 0;
+        }
+        .btn {
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body>
 
-\f0\fs24 \cf0 <!DOCTYPE html>\
-<html lang="es">\
-<head>\
-    <meta charset="UTF-8">\
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">\
-    <title>Cat\'e1logo de M\'e1quinas de Hielo - Don Alex</title>\
-    <style>\
-        :root \{\
-            --primary-color: #0056b3;\
-            --secondary-color: #f8f9fa;\
-            --text-color: #333;\
-            --accent-color: #28a745;\
-        \}\
-        body \{\
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;\
-            margin: 0;\
-            padding: 0;\
-            color: var(--text-color);\
-            background-color: var(--secondary-color);\
-            line-height: 1.6;\
-        \}\
-        header \{\
-            background-color: var(--primary-color);\
-            color: white;\
-            padding: 3rem 5%;\
-            text-align: center;\
-        \}\
-        header h1 \{\
-            margin: 0;\
-            font-size: 2.5rem;\
-        \}\
-        .hero-subtitle \{\
-            font-size: 1.2rem;\
-            margin-top: 10px;\
-            font-weight: 300;\
-        \}\
-        .benefits-section \{\
-            background: white;\
-            padding: 4rem 5%;\
-        \}\
-        .benefits-section h2 \{\
-            text-align: center;\
-            color: var(--primary-color);\
-            margin-bottom: 2rem;\
-        \}\
-        .benefits-grid \{\
-            display: grid;\
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));\
-            gap: 20px;\
-            max-width: 1200px;\
-            margin: 0 auto;\
-        \}\
-        .benefit-item \{\
-            background: var(--secondary-color);\
-            padding: 20px;\
-            border-radius: 8px;\
-            border-left: 4px solid var(--primary-color);\
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);\
-        \}\
-        .catalog-section \{\
-            padding: 4rem 5%;\
-            max-width: 1200px;\
-            margin: 0 auto;\
-        \}\
-        .catalog-section h2 \{\
-            text-align: center;\
-            color: var(--primary-color);\
-            margin-bottom: 3rem;\
-        \}\
-        .grid-container \{\
-            display: grid;\
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));\
-            gap: 30px;\
-        \}\
-        .card \{\
-            background: white;\
-            border: 1px solid #e0e0e0;\
-            border-radius: 10px;\
-            overflow: hidden;\
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);\
-            transition: transform 0.3s ease;\
-        \}\
-        .card:hover \{\
-            transform: translateY(-5px);\
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);\
-        \}\
-        .card-img \{\
-            width: 100%;\
-            height: 250px;\
-            object-fit: contain;\
-            background-color: #fff;\
-            padding: 10px;\
-            border-bottom: 1px solid #eee;\
-        \}\
-        .card-content \{\
-            padding: 25px;\
-        \}\
-        .card-title \{\
-            margin: 0 0 10px 0;\
-            font-size: 1.4rem;\
-            color: var(--text-color);\
-        \}\
-        .card-price \{\
-            font-size: 1.5rem;\
-            color: var(--primary-color);\
-            font-weight: bold;\
-            margin: 0 0 20px 0;\
-        \}\
-        .specs-list \{\
-            list-style: none;\
-            padding: 0;\
-            margin: 0;\
-            font-size: 0.95rem;\
-        \}\
-        .specs-list li \{\
-            padding: 8px 0;\
-            border-bottom: 1px solid #f0f0f0;\
-            display: flex;\
-            justify-content: space-between;\
-        \}\
-        .specs-list li:last-child \{\
-            border-bottom: none;\
-        \}\
-        .specs-label \{\
-            font-weight: 600;\
-            color: #555;\
-        \}\
-        footer \{\
-            background: #222;\
-            color: white;\
-            text-align: center;\
-            padding: 3rem 5%;\
-        \}\
-        .contact-number \{\
-            font-size: 2rem;\
-            font-weight: bold;\
-            color: var(--accent-color);\
-            margin: 20px 0;\
-        \}\
-        .btn \{\
-            display: inline-block;\
-            background: var(--accent-color);\
-            color: white;\
-            padding: 15px 30px;\
-            text-decoration: none;\
-            border-radius: 5px;\
-            font-weight: bold;\
-            font-size: 1.1rem;\
-            transition: background 0.3s;\
-        \}\
-        .btn:hover \{\
-            background: #218838;\
-        \}\
-    </style>\
-</head>\
-<body>\
-\
-    <header>\
-        <h1>Cat\'e1logo de M\'e1quinas de Hielo</h1>\
-        <p class="hero-subtitle">Soluciones puras y simples para tu negocio.</p>\
-        <br>\
-        <a href="#catalogo" class="btn">Ver Modelos Disponibles</a>\
-    </header>\
-\
-    <section class="benefits-section">\
-        <h2>\'bfQu\'e9 incluye nuestra Renta Mensual?</h2>\
-        <div class="benefits-grid">\
-            <div class="benefit-item">Instalaci\'f3n est\'e9tica, no se da\'f1an paredes ni tuber\'edas (No tiene costo adicional)[cite: 1]</div>\
-            <div class="benefit-item">Cambio de filtros cada seis meses[cite: 1]</div>\
-            <div class="benefit-item">Mantenimiento y sanitizaci\'f3n (limpieza especial)[cite: 1]</div>\
-            <div class="benefit-item">Garant\'eda de 3 a\'f1os[cite: 1]</div>\
-            <div class="benefit-item">No tiene incremento en el precio durante los a\'f1os de contrato[cite: 1]</div>\
-        </div>\
-    </section>\
-\
-    <section id="catalogo" class="catalog-section">\
-        <h2>Equipos AICETRO</h2>\
-        <div class="grid-container">\
-            \
-            <!-- Modelo SCI-035 -->\
-            <div class="card">\
-                <img src="img/sci-035.jpg" alt="AICETRO SCI-035" class="card-img">\
-                <div class="card-content">\
-                    <h3 class="card-title">AICETRO SCI-035[cite: 1]</h3>\
-                    <p class="card-price">\uc0\u8353  45,000 / mes[cite: 1]</p>\
-                    <ul class="specs-list">\
-                        <li><span class="specs-label">Producci\'f3n (24hrs):</span> <span>36 kg[cite: 1]</span></li>\
-                        <li><span class="specs-label">Almacenamiento:</span> <span>13 kg[cite: 1]</span></li>\
-                        <li><span class="specs-label">Energ\'eda:</span> <span>0.45 kWh/45kg[cite: 1]</span></li>\
-                        <li><span class="specs-label">Dimensiones:</span> <span>407mm W x 463mm D x 770mm H[cite: 1]</span></li>\
-                    </ul>\
-                </div>\
-            </div>\
-\
-            <!-- Modelo SCI-050 -->\
-            <div class="card">\
-                <img src="img/sci-050.jpg" alt="AICETRO SCI-050" class="card-img">\
-                <div class="card-content">\
-                    <h3 class="card-title">AICETRO SCI-050[cite: 1]</h3>\
-                    <p class="card-price">\uc0\u8353  55,000 / mes[cite: 1]</p>\
-                    <ul class="specs-list">\
-                        <li><span class="specs-label">Producci\'f3n (24hrs):</span> <span>58 kg[cite: 1]</span></li>\
-                        <li><span class="specs-label">Almacenamiento:</span> <span>25 kg[cite: 1]</span></li>\
-                        <li><span class="specs-label">Energ\'eda:</span> <span>0.8 kWh/45kg[cite: 1]</span></li>\
-                        <li><span class="specs-label">Dimensiones:</span> <span>524mm W x 642mm D x 908mm F[cite: 1]</span></li>\
-                    </ul>\
-                </div>\
-            </div>\
-\
-            <!-- Modelo SCI-090 -->\
-            <div class="card">\
-                <img src="img/sci-090.jpg" alt="AICETRO SCI-090" class="card-img">\
-                <div class="card-content">\
-                    <h3 class="card-title">AICETRO SCI-090[cite: 1]</h3>\
-                    <p class="card-price">\uc0\u8353  90,000 / mes[cite: 1]</p>\
-                    <ul class="specs-list">\
-                        <li><span class="specs-label">Producci\'f3n (24hrs):</span> <span>97 kg[cite: 1]</span></li>\
-                        <li><span class="specs-label">Almacenamiento:</span> <span>55 kg[cite: 1]</span></li>\
-                        <li><span class="specs-label">Energ\'eda:</span> <span>1.1 kWh/45kg[cite: 1]</span></li>\
-                        <li><span class="specs-label">Dimensiones:</span> <span>754mm W x 655mm D x 1133mm H[cite: 1]</span></li>\
-                    </ul>\
-                </div>\
-            </div>\
-\
-            <!-- Modelo SCI-120A -->\
-            <div class="card">\
-                <img src="img/sci-120a.jpg" alt="AICETRO SCI-120A" class="card-img">\
-                <div class="card-content">\
-                    <h3 class="card-title">AICETRO SCI-120A[cite: 1]</h3>\
-                    <p class="card-price">\uc0\u8353  130,000 / mes[cite: 1]</p>\
-                    <ul class="specs-list">\
-                        <li><span class="specs-label">Producci\'f3n (24hrs):</span> <span>112 kg[cite: 1]</span></li>\
-                        <li><span class="specs-label">Almacenamiento:</span> <span>55 kg[cite: 1]</span></li>\
-                        <li><span class="specs-label">Energ\'eda:</span> <span>1.4 kWh/45kg[cite: 1]</span></li>\
-                        <li><span class="specs-label">Dimensiones:</span> <span>755mm W x 646mm D x 1137mm H[cite: 1]</span></li>\
-                    </ul>\
-                </div>\
-            </div>\
-\
-            <!-- Modelo IM-260AD -->\
-            <div class="card">\
-                <img src="img/im-260ad.jpg" alt="AICETRO IM-260AD" class="card-img">\
-                <div class="card-content">\
-                    <h3 class="card-title">AICETRO IM-260AD[cite: 1]</h3>\
-                    <p class="card-price">\uc0\u8353  180,000 / mes[cite: 1]</p>\
-                    <ul class="specs-list">\
-                        <li><span class="specs-label">Producci\'f3n (24hrs):</span> <span>272 kg[cite: 1]</span></li>\
-                        <li><span class="specs-label">Almacenamiento:</span> <span>200 kg[cite: 1]</span></li>\
-                        <li><span class="specs-label">Energ\'eda:</span> <span>1.25 kWh/45kg[cite: 1]</span></li>\
-                        <li><span class="specs-label">Dimensiones:</span> <span>762mm W x 630mm D x 573mm H[cite: 1]</span></li>\
-                    </ul>\
-                </div>\
-            </div>\
-\
-            <!-- Modelo IM-500AD -->\
-            <div class="card">\
-                <img src="img/im-500ad.jpg" alt="AICETRO IM-500AD" class="card-img">\
-                <div class="card-content">\
-                    <h3 class="card-title">AICETRO IM-500AD[cite: 1]</h3>\
-                    <p class="card-price">\uc0\u8353  275,000 / mes[cite: 1]</p>\
-                    <ul class="specs-list">\
-                        <li><span class="specs-label">Producci\'f3n (24hrs):</span> <span>501 kg[cite: 1]</span></li>\
-                        <li><span class="specs-label">Almacenamiento:</span> <span>200 kg[cite: 1]</span></li>\
-                        <li><span class="specs-label">Energ\'eda:</span> <span>1.8 kWh/ 45kg[cite: 1]</span></li>\
-                        <li><span class="specs-label">Dimensiones:</span> <span>762mm W x 630mm D x 770mm H[cite: 1]</span></li>\
-                    </ul>\
-                </div>\
-            </div>\
-        </div>\
-\
-        <h2 style="margin-top: 4rem;">Equipos Ice-O-Matic</h2>\
-        <div class="grid-container">\
-            <!-- Modelo MFI 500 -->\
-            <div class="card">\
-                <img src="img/mfi-500.jpg" alt="Ice-O-Matic MFI 500" class="card-img">\
-                <div class="card-content">\
-                    <h3 class="card-title">Ice-O-Matic MFI 500[cite: 1]</h3>\
-                    <p class="card-price">\uc0\u8353  130,000 / mes[cite: 1]</p>\
-                    <ul class="specs-list">\
-                        <li><span class="specs-label">Producci\'f3n (24hrs):</span> <span>245 kg[cite: 1]</span></li>\
-                        <li><span class="specs-label">Almacenamiento:</span> <span>232 kg[cite: 1]</span></li>\
-                        <li><span class="specs-label">Energ\'eda:</span> <span>4.5 kWh/45kg[cite: 1]</span></li>\
-                        <li><span class="specs-label">Dimensiones:</span> <span>533mm W x 610mm D x 686mm H[cite: 1]</span></li>\
-                    </ul>\
-                </div>\
-            </div>\
-\
-            <!-- Modelo MFI 800 -->\
-            <div class="card">\
-                <img src="img/mfi-800.jpg" alt="Ice-O-Matic MFI 800" class="card-img">\
-                <div class="card-content">\
-                    <h3 class="card-title">Ice-O-Matic MFI 800[cite: 1]</h3>\
-                    <p class="card-price">\uc0\u8353  175,000 / mes[cite: 1]</p>\
-                    <ul class="specs-list">\
-                        <li><span class="specs-label">Producci\'f3n (24hrs):</span> <span>426 kg[cite: 1]</span></li>\
-                        <li><span class="specs-label">Almacenamiento:</span> <span>232 kg[cite: 1]</span></li>\
-                        <li><span class="specs-label">Energ\'eda:</span> <span>3.8 kWh/45kg[cite: 1]</span></li>\
-                        <li><span class="specs-label">Dimensiones:</span> <span>533mm W x 610mm D x 686mm F[cite: 1]</span></li>\
-                    </ul>\
-                </div>\
-            </div>\
-        </div>\
-    </section>\
-\
-    <footer>\
-        <h2>\'bfListo para equipar tu negocio?</h2>\
-        <p>Cont\'e1ctanos para asesorarte y agendar tu instalaci\'f3n sin costo.</p>\
-        <div class="contact-number">Tel: 2441 3783[cite: 1]</div>\
-        <p>Todos los precios incluyen IVA[cite: 1]</p>\
-    </footer>\
-\
-</body>\
-</html>}
+    <header>
+        <h1>Catálogo de Máquinas de Hielo</h1>
+        <p class="hero-subtitle">Soluciones puras y simples para tu negocio.</p>
+        <br>
+        <a href="#catalogo" class="btn">Ver Modelos Disponibles</a>
+    </header>
+
+    <section class="benefits-section">
+        <h2>¿Qué incluye nuestra Renta Mensual?</h2>
+        <div class="benefits-grid">
+            <div class="benefit-item">Instalación estética, no se dañan paredes ni tuberías (No tiene costo adicional)</div>
+            <div class="benefit-item">Cambio de filtros cada seis meses</div>
+            <div class="benefit-item">Mantenimiento y sanitización (limpieza especial)</div>
+            <div class="benefit-item">Garantía de 3 años</div>
+            <div class="benefit-item">No tiene incremento en el precio durante los años de contrato</div>
+        </div>
+    </section>
+
+    <section id="catalogo" class="catalog-section">
+        <h2>Equipos AICETRO</h2>
+        <div class="grid-container">
+            
+            <div class="card">
+                <img src="img/foto 1.png" alt="AICETRO SCI-035"
