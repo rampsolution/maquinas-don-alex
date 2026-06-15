@@ -11,6 +11,7 @@
             --primary: #0a192f;
             --secondary: #f4f7f6;
             --accent: #00a8ff;
+            --whatsapp: #25D366;
             --text-dark: #2d3436;
             --text-light: #636e72;
             --white: #ffffff;
@@ -29,10 +30,10 @@
             color: var(--text-dark);
         }
 
-        /* Hero Section Premium */
+        /* Hero Section Premium con Cubitos de Hielo */
         header {
-            background: linear-gradient(rgba(10, 25, 47, 0.8), rgba(10, 25, 47, 0.9)), 
-                        url('https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80') center/cover;
+            background: linear-gradient(rgba(10, 25, 47, 0.7), rgba(10, 25, 47, 0.85)), 
+                        url('https://images.unsplash.com/photo-1550505095-81378a675e8f?auto=format&fit=crop&q=80') center/cover;
             height: 70vh;
             display: flex;
             flex-direction: column;
@@ -131,7 +132,7 @@
             gap: 35px;
         }
 
-        /* Tarjetas de Producto Modernas */
+        /* Tarjetas de Producto */
         .card {
             background: var(--white);
             border-radius: 16px;
@@ -176,6 +177,7 @@
 
         .specs-list {
             list-style: none;
+            margin-bottom: 20px;
         }
 
         .specs-list li {
@@ -187,16 +189,28 @@
             color: var(--text-light);
         }
 
-        .specs-list li:last-child {
-            border-bottom: none;
-        }
-
         .specs-label {
             font-weight: 600;
             color: var(--text-dark);
         }
 
-        /* Footer */
+        .btn-card {
+            display: block;
+            text-align: center;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .btn-card:hover {
+            background-color: var(--accent);
+        }
+
+        /* Footer y Contacto */
         footer {
             background: var(--primary);
             color: var(--white);
@@ -209,20 +223,59 @@
             margin-bottom: 15px;
         }
 
-        footer p {
-            color: #b2bec3;
-        }
-
         .contact-number {
             font-size: 2.5rem;
             font-weight: 700;
-            color: var(--accent);
+            color: var(--whatsapp);
             margin: 30px 0;
+        }
+
+        .btn-whatsapp {
+            background-color: var(--whatsapp);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-whatsapp:hover {
+            transform: scale(1.05);
+        }
+
+        /* Botón WhatsApp Flotante */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 15px rgba(0,0,0,0.2);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
         }
 
         @media (max-width: 768px) {
             header h1 { font-size: 2.2rem; }
-            .card-img { height: 220px; }
+            .whatsapp-float { bottom: 20px; right: 20px; width: 50px; height: 50px; font-size: 25px; }
         }
     </style>
 </head>
@@ -252,124 +305,116 @@
         <div class="grid-container">
             <!-- Modelo SCI-035 -->
             <div class="card">
-                <img src="img/foto1.png" alt="AICETRO SCI-035" class="card-img">
+                <img src="img/SCI-035.jpg" alt="AICETRO SCI-035" class="card-img" onerror="this.src='https://via.placeholder.com/300x250?text=Falta+SCI-035.jpg'">
                 <div class="card-content">
                     <h3 class="card-title">AICETRO SCI-035</h3>
                     <p class="card-price">₡ 45,000 <span style="font-size:1rem; font-weight:400; color:#636e72;">/ mes</span></p>
                     <ul class="specs-list">
                         <li><span class="specs-label">Producción (24hrs):</span> <span>36 kg</span></li>
                         <li><span class="specs-label">Almacenamiento:</span> <span>13 kg</span></li>
-                        <li><span class="specs-label">Energía:</span> <span>0.45 kWh/45kg</span></li>
-                        <li><span class="specs-label">Dimensiones:</span> <span>407 x 463 x 770 mm</span></li>
                     </ul>
+                    <a href="https://wa.me/50664701571?text=Hola%20Don%20Alex,%20estoy%20interesado%20en%20el%20modelo%20AICETRO%20SCI-035." target="_blank" class="btn-card">Me interesa este modelo</a>
                 </div>
             </div>
 
             <!-- Modelo SCI-050 -->
             <div class="card">
-                <img src="img/foto2.png" alt="AICETRO SCI-050" class="card-img">
+                <img src="img/SCI-050.jpg" alt="AICETRO SCI-050" class="card-img" onerror="this.src='https://via.placeholder.com/300x250?text=Falta+SCI-050.jpg'">
                 <div class="card-content">
                     <h3 class="card-title">AICETRO SCI-050</h3>
                     <p class="card-price">₡ 55,000 <span style="font-size:1rem; font-weight:400; color:#636e72;">/ mes</span></p>
                     <ul class="specs-list">
                         <li><span class="specs-label">Producción (24hrs):</span> <span>58 kg</span></li>
                         <li><span class="specs-label">Almacenamiento:</span> <span>25 kg</span></li>
-                        <li><span class="specs-label">Energía:</span> <span>0.8 kWh/45kg</span></li>
-                        <li><span class="specs-label">Dimensiones:</span> <span>524 x 642 x 908 mm</span></li>
                     </ul>
+                    <a href="https://wa.me/50664701571?text=Hola%20Don%20Alex,%20estoy%20interesado%20en%20el%20modelo%20AICETRO%20SCI-050." target="_blank" class="btn-card">Me interesa este modelo</a>
                 </div>
             </div>
 
             <!-- Modelo SCI-090 -->
             <div class="card">
-                <img src="img/foto3.png" alt="AICETRO SCI-090" class="card-img">
+                <img src="img/SCI-090.jpg" alt="AICETRO SCI-090" class="card-img" onerror="this.src='https://via.placeholder.com/300x250?text=Falta+SCI-090.jpg'">
                 <div class="card-content">
                     <h3 class="card-title">AICETRO SCI-090</h3>
                     <p class="card-price">₡ 90,000 <span style="font-size:1rem; font-weight:400; color:#636e72;">/ mes</span></p>
                     <ul class="specs-list">
                         <li><span class="specs-label">Producción (24hrs):</span> <span>97 kg</span></li>
                         <li><span class="specs-label">Almacenamiento:</span> <span>55 kg</span></li>
-                        <li><span class="specs-label">Energía:</span> <span>1.1 kWh/45kg</span></li>
-                        <li><span class="specs-label">Dimensiones:</span> <span>754 x 655 x 1133 mm</span></li>
                     </ul>
+                    <a href="https://wa.me/50664701571?text=Hola%20Don%20Alex,%20estoy%20interesado%20en%20el%20modelo%20AICETRO%20SCI-090." target="_blank" class="btn-card">Me interesa este modelo</a>
                 </div>
             </div>
 
             <!-- Modelo SCI-120A -->
             <div class="card">
-                <img src="img/foto4.png" alt="AICETRO SCI-120A" class="card-img">
+                <img src="img/SCI-120A.png" alt="AICETRO SCI-120A" class="card-img" onerror="this.src='https://via.placeholder.com/300x250?text=Falta+SCI-120A.png'">
                 <div class="card-content">
                     <h3 class="card-title">AICETRO SCI-120A</h3>
                     <p class="card-price">₡ 130,000 <span style="font-size:1rem; font-weight:400; color:#636e72;">/ mes</span></p>
                     <ul class="specs-list">
                         <li><span class="specs-label">Producción (24hrs):</span> <span>112 kg</span></li>
                         <li><span class="specs-label">Almacenamiento:</span> <span>55 kg</span></li>
-                        <li><span class="specs-label">Energía:</span> <span>1.4 kWh/45kg</span></li>
-                        <li><span class="specs-label">Dimensiones:</span> <span>755 x 646 x 1137 mm</span></li>
                     </ul>
+                    <a href="https://wa.me/50664701571?text=Hola%20Don%20Alex,%20estoy%20interesado%20en%20el%20modelo%20AICETRO%20SCI-120A." target="_blank" class="btn-card">Me interesa este modelo</a>
                 </div>
             </div>
 
             <!-- Modelo IM-260AD -->
             <div class="card">
-                <img src="img/foto5.png" alt="AICETRO IM-260AD" class="card-img">
+                <img src="img/IM-260AD.jpg" alt="AICETRO IM-260AD" class="card-img" onerror="this.src='https://via.placeholder.com/300x250?text=Falta+IM-260AD.jpg'">
                 <div class="card-content">
                     <h3 class="card-title">AICETRO IM-260AD</h3>
                     <p class="card-price">₡ 180,000 <span style="font-size:1rem; font-weight:400; color:#636e72;">/ mes</span></p>
                     <ul class="specs-list">
                         <li><span class="specs-label">Producción (24hrs):</span> <span>272 kg</span></li>
                         <li><span class="specs-label">Almacenamiento:</span> <span>200 kg</span></li>
-                        <li><span class="specs-label">Energía:</span> <span>1.25 kWh/45kg</span></li>
-                        <li><span class="specs-label">Dimensiones:</span> <span>762 x 630 x 573 mm</span></li>
                     </ul>
+                    <a href="https://wa.me/50664701571?text=Hola%20Don%20Alex,%20estoy%20interesado%20en%20el%20modelo%20AICETRO%20IM-260AD." target="_blank" class="btn-card">Me interesa este modelo</a>
                 </div>
             </div>
 
             <!-- Modelo IM-500AD -->
             <div class="card">
-                <img src="img/foto6.png" alt="AICETRO IM-500AD" class="card-img">
+                <img src="img/IM-500AD.png" alt="AICETRO IM-500AD" class="card-img" onerror="this.src='https://via.placeholder.com/300x250?text=Falta+IM-500AD.png'">
                 <div class="card-content">
                     <h3 class="card-title">AICETRO IM-500AD</h3>
                     <p class="card-price">₡ 275,000 <span style="font-size:1rem; font-weight:400; color:#636e72;">/ mes</span></p>
                     <ul class="specs-list">
                         <li><span class="specs-label">Producción (24hrs):</span> <span>501 kg</span></li>
                         <li><span class="specs-label">Almacenamiento:</span> <span>200 kg</span></li>
-                        <li><span class="specs-label">Energía:</span> <span>1.8 kWh/ 45kg</span></li>
-                        <li><span class="specs-label">Dimensiones:</span> <span>762 x 630 x 770 mm</span></li>
                     </ul>
+                    <a href="https://wa.me/50664701571?text=Hola%20Don%20Alex,%20estoy%20interesado%20en%20el%20modelo%20AICETRO%20IM-500AD." target="_blank" class="btn-card">Me interesa este modelo</a>
                 </div>
             </div>
         </div>
 
-        <h3 class="brand-title">Línea Ice-O-Matic</h3>
+        <h3 class="brand-title" style="margin-top: 4rem;">Línea Ice-O-Matic</h3>
         <div class="grid-container">
             <!-- Modelo MFI 500 -->
             <div class="card">
-                <img src="img/foto7.png" alt="Ice-O-Matic MFI 500" class="card-img">
+                <img src="img/MFI500.png" alt="Ice-O-Matic MFI 500" class="card-img" onerror="this.src='https://via.placeholder.com/300x250?text=Falta+MFI500.png'">
                 <div class="card-content">
                     <h3 class="card-title">Ice-O-Matic MFI 500</h3>
                     <p class="card-price">₡ 130,000 <span style="font-size:1rem; font-weight:400; color:#636e72;">/ mes</span></p>
                     <ul class="specs-list">
                         <li><span class="specs-label">Producción (24hrs):</span> <span>245 kg</span></li>
                         <li><span class="specs-label">Almacenamiento:</span> <span>232 kg</span></li>
-                        <li><span class="specs-label">Energía:</span> <span>4.5 kWh/45kg</span></li>
-                        <li><span class="specs-label">Dimensiones:</span> <span>533 x 610 x 686 mm</span></li>
                     </ul>
+                    <a href="https://wa.me/50664701571?text=Hola%20Don%20Alex,%20estoy%20interesado%20en%20el%20modelo%20Ice-O-Matic%20MFI%20500." target="_blank" class="btn-card">Me interesa este modelo</a>
                 </div>
             </div>
 
             <!-- Modelo MFI 800 -->
             <div class="card">
-                <img src="img/foto8.png" alt="Ice-O-Matic MFI 800" class="card-img">
+                <img src="img/MFI800.png" alt="Ice-O-Matic MFI 800" class="card-img" onerror="this.src='https://via.placeholder.com/300x250?text=Falta+MFI800.png'">
                 <div class="card-content">
                     <h3 class="card-title">Ice-O-Matic MFI 800</h3>
                     <p class="card-price">₡ 175,000 <span style="font-size:1rem; font-weight:400; color:#636e72;">/ mes</span></p>
                     <ul class="specs-list">
                         <li><span class="specs-label">Producción (24hrs):</span> <span>426 kg</span></li>
                         <li><span class="specs-label">Almacenamiento:</span> <span>232 kg</span></li>
-                        <li><span class="specs-label">Energía:</span> <span>3.8 kWh/45kg</span></li>
-                        <li><span class="specs-label">Dimensiones:</span> <span>533 x 610 x 686 mm</span></li>
                     </ul>
+                    <a href="https://wa.me/50664701571?text=Hola%20Don%20Alex,%20estoy%20interesado%20en%20el%20modelo%20Ice-O-Matic%20MFI%20800." target="_blank" class="btn-card">Me interesa este modelo</a>
                 </div>
             </div>
         </div>
@@ -378,9 +423,22 @@
     <footer>
         <h2>¿Listo para equipar tu negocio?</h2>
         <p>Contáctanos hoy mismo para recibir asesoría personalizada y agendar tu instalación sin costo.</p>
-        <div class="contact-number">Tel: 2441 3783</div>
-        <p>Todos los precios incluyen IVA | Catálogo Oficial</p>
+        <div class="contact-number">+506 64701571</div>
+        <a href="https://wa.me/50664701571?text=Hola%20Don%20Alex,%20vengo%20de%20la%20página%20web%20y%20quiero%20información." class="btn-whatsapp" target="_blank">
+            <!-- Icono SVG de WhatsApp -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+            </svg>
+            Escribir a Don Alex
+        </a>
     </footer>
+
+    <!-- Botón Flotante WhatsApp -->
+    <a href="https://wa.me/50664701571?text=Hola%20Don%20Alex,%20estoy%20viendo%20el%20catálogo%20y%20necesito%20ayuda." class="whatsapp-float" target="_blank">
+        <svg width="35" height="35" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+        </svg>
+    </a>
 
 </body>
 </html>
