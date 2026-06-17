@@ -22,7 +22,7 @@
             --text-muted: #64748b;   
             --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
             --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
-            --shadow-lg: 0 20px 40px -15px rgba(0, 0, 0, 0.12);
+            --shadow-lg: 0 20px 40px -15 rgba(0, 0, 0, 0.12);
             --radius-md: 12px;
             --radius-lg: 24px;
         }
@@ -46,7 +46,7 @@
             color: var(--text-main);
         }
 
-        /* --- ANIMACIONES DE ENTRADA (SCROLL) --- */
+        /* --- ANIMACIONES DE ENTRADA --- */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
@@ -181,30 +181,7 @@
             color: var(--accent);
         }
 
-        /* --- SECTIONS HEADERS --- */
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-header h2 {
-            font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-            color: var(--primary);
-            font-weight: 700;
-            margin-bottom: 15px;
-            letter-spacing: -1px;
-            padding: 0 10px;
-        }
-
-        .section-header p {
-            color: var(--text-muted);
-            font-size: 1.05rem;
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-
-        /* --- CALCULADORA SECTION VISUAL --- */
+        /* --- CALCULADORA SECTION --- */
         .calc-section {
             padding: 5rem 5%;
             background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
@@ -264,7 +241,7 @@
             box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.12);
         }
 
-        /* Tarjeta de Resultado Dinámica Premium con microinteracciones de nivel SaaS */
+        /* Tarjeta de Resultado Dinámica Premium */
         .result-card-premium {
             background: var(--primary);
             color: #fff;
@@ -275,7 +252,6 @@
             flex-direction: column;
             transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease, border-color 0.4s ease;
             position: relative;
-            border: 1px solid rgba(255,255,255,0.05);
             min-height: 520px;
         }
 
@@ -285,7 +261,6 @@
             border-color: rgba(14, 165, 233, 0.3);
         }
 
-        /* Spinner Async Interactivo */
         .loading-state {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -329,7 +304,7 @@
             height: 100%;
             opacity: 1;
             transform: scale(1) translateY(0);
-            transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+            transition: opacity 0.2s ease, transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
 
         .result-content-anim.fade-out {
@@ -485,7 +460,7 @@
             line-height: 1.5;
         }
 
-        /* --- STRATEGIC COMPARATIVE SECTION (100% Completa) --- */
+        /* --- STRATEGIC COMPARATIVE SECTION --- */
         .compare-section {
             padding: 5rem 5%;
             background: #fff;
@@ -1220,7 +1195,7 @@
     </a>
 
     <script>
-        // Intersection Observer para animar el scroll
+        // Intersection Observer para animar scroll
         const revealElements = document.querySelectorAll('.reveal');
         const revealCallback = (entries) => {
             entries.forEach(entry => {
@@ -1230,7 +1205,7 @@
         const revealObserver = new IntersectionObserver(revealCallback, { threshold: 0.08, rootMargin: "0px 0px -40px 0px" });
         revealElements.forEach(el => revealObserver.observe(el));
 
-        // Dataset de Máquinas
+        // Dataset de Máquinas (Soporta flujos masivos de hielo hasta los 501 kg)
         const catalogData = {
             "SCI-035": {
                 name: "AICETRO SCI-035", prod: "36 kg / 24h", price: "₡ 45,000", img: "img/SCI-035.png", badge: "⭐ Recomendación ideal",
@@ -1261,36 +1236,57 @@
                 desc: "Diseño americano de alta gama concebido para flujos de trabajo extremos. Una máquina indestructible que amortiza cada colón invertido."
             },
             "IM-500AD": {
-                name: "AICETRO IM-500AD", prod: "501 kg / 24h", price: "₡ 275,000", img: "img/IM-500AD.png", badge: "👑 El Gigante Industrial",
-                desc: "Produce media tonelada de hielo al día. Es la solución definitiva para complejos hoteleros que necesitan abastecer múltiples estaciones simultáneamente."
+                name: "AICETRO IM-500AD", prod: "501 kg / 24h", price: "₡ 275,000", img: "img/IM-500AD.png", badge: "👑 El Gigante Industrial Definitivo (501 kg)",
+                desc: "Produce media tonelada de hielo al día de forma automatizada. Es la solución definitiva y de máxima fuerza industrial para hoteles, distribuidoras y complejos de alto nivel."
             }
         };
 
-        // Estado del Debounce
+        // Hilos de tiempo asíncronos para evitar Race Conditions
         let calcTimeout = null;
         let isInitialLoad = true;
 
         function triggerCalculation() {
-            // ARREGLO CRÍTICO: Si el usuario escribe rápido, abortamos el proceso anterior de inmediato
+            // Cancelamos inmediatamente el temporizador previo para responder al nuevo input sin trabas
             if (calcTimeout) {
                 clearTimeout(calcTimeout);
             }
 
-            // Captura síncrona INMEDIATA de los valores actuales del DOM
+            if (isInitialLoad) {
+                executeCalculation();
+                isInitialLoad = false;
+                return;
+            }
+
+            const contentDiv = document.getElementById('resultContent');
+            const loadingDiv = document.getElementById('loadingState');
+            
+            contentDiv.classList.add('fade-out');
+            loadingDiv.classList.add('active');
+
+            // Delay estratégico sutil (250ms) para renderizar fluido mientras el usuario escribe rápido
+            calcTimeout = setTimeout(() => {
+                executeCalculation();
+                loadingDiv.classList.remove('active');
+                void contentDiv.offsetWidth; // Forzar reflow nativo
+                contentDiv.classList.remove('fade-out');
+            }, 250);
+        }
+
+        function executeCalculation() {
             const bizType = document.getElementById('bizType').value;
             const kgInputRaw = document.getElementById('kgInput').value;
             let kg = parseInt(kgInputRaw);
 
-            // Cálculo predictivo basado en el perfil de negocio
+            // Predicción inteligente si no se digita número manual
             if (!kgInputRaw || isNaN(kg)) {
                 const baselines = {
                     'cafeteria': 35, 'restaurante': 85, 'bar': 140,
-                    'supermercado': 300, 'hotel': 490, 'otro': 90
+                    'supermercado': 300, 'hotel': 501, 'otro': 90
                 };
                 kg = baselines[bizType];
             }
 
-            // Clasificación lógica síncrona (Asegura exactitud matemática instantánea)
+            // Escalador lógico estructural de rango completo
             let targetKey = "SCI-050";
             if (kg <= 36) targetKey = "SCI-035";
             else if (kg <= 58) targetKey = "SCI-050";
@@ -1299,31 +1295,11 @@
             else if (kg <= 245) targetKey = "MFI500";
             else if (kg <= 272) targetKey = "IM-260AD";
             else if (kg <= 426) targetKey = "MFI800";
-            else targetKey = "IM-500AD";
+            else targetKey = "IM-500AD"; // Cubre de 427 kg hasta 501 kg o más sin límites falsos
 
             const model = catalogData[targetKey];
-            const contentDiv = document.getElementById('resultContent');
-            const loadingDiv = document.getElementById('loadingState');
 
-            if (isInitialLoad) {
-                updateCardData(model);
-                isInitialLoad = false;
-            } else {
-                // Iniciar estado estético de carga (Feedback Visual Premium)
-                contentDiv.classList.add('fade-out');
-                loadingDiv.classList.add('active');
-
-                // Encolar renderizado limpio (350ms de delay para un look fluido estilo Apple/Stripe)
-                calcTimeout = setTimeout(() => {
-                    updateCardData(model);
-                    loadingDiv.classList.remove('active');
-                    void contentDiv.offsetWidth; // Forzar reflow del DOM
-                    contentDiv.classList.remove('fade-out');
-                }, 350);
-            }
-        }
-
-        function updateCardData(model) {
+            // Inyección en tiempo real en los nodos del DOM
             document.getElementById('resBadge').innerText = model.badge;
             document.getElementById('resImg').src = model.img;
             document.getElementById('resImg').alt = model.name;
@@ -1336,7 +1312,6 @@
             document.getElementById('resWhatsapp').href = `https://wa.me/50664701571?text=${encodeURIComponent(msg)}`;
         }
 
-        // Ejecución inmediata al inicializar el árbol de nodos
         window.onload = triggerCalculation;
     </script>
 </body>
