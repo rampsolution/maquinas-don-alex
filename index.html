@@ -2,10 +2,12 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Máquinas de Hielo Don Alex | Alquiler Premium</title>
     
+    <!-- Google Fonts: Poppins -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome para Iconos Profesionales -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -35,10 +37,16 @@
             scroll-behavior: smooth;
         }
 
+        /* Solución para la franja blanca lateral en móviles */
+        html, body {
+            width: 100%;
+            max-width: 100vw;
+            overflow-x: hidden;
+        }
+
         body {
             background-color: var(--bg-body);
             color: var(--text-main);
-            overflow-x: hidden;
         }
 
         /* --- SISTEMA DE ANIMACIONES SUAVES --- */
@@ -73,6 +81,7 @@
         .hero-content {
             max-width: 950px;
             z-index: 2;
+            width: 100%;
         }
 
         header h1 {
@@ -87,7 +96,7 @@
         }
 
         header p.subtitle {
-            font-size: clamp(1.1rem, 1.8vw, 1.35rem);
+            font-size: clamp(1rem, 1.8vw, 1.35rem);
             font-weight: 300;
             line-height: 1.6;
             margin-bottom: 45px;
@@ -98,10 +107,11 @@
 
         .hero-buttons {
             display: flex;
-            gap: 20px;
+            gap: 15px;
             justify-content: center;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
             flex-wrap: wrap;
+            width: 100%;
         }
 
         .btn {
@@ -109,7 +119,7 @@
             align-items: center;
             justify-content: center;
             gap: 12px;
-            padding: 16px 38px;
+            padding: 16px 32px;
             border-radius: 50px;
             font-weight: 600;
             font-size: 1.05rem;
@@ -157,7 +167,7 @@
 
         .trust-badges {
             display: flex;
-            gap: 30px;
+            gap: 25px;
             justify-content: center;
             flex-wrap: wrap;
             font-size: 0.95rem;
@@ -181,23 +191,25 @@
         }
 
         .section-header h2 {
-            font-size: clamp(2rem, 3.5vw, 2.6rem);
+            font-size: clamp(1.8rem, 3.5vw, 2.6rem);
             color: var(--primary);
             font-weight: 700;
             margin-bottom: 15px;
             letter-spacing: -1px;
+            padding: 0 10px;
         }
 
         .section-header p {
             color: var(--text-muted);
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             max-width: 600px;
             margin: 0 auto;
+            padding: 0 15px;
         }
 
         /* --- CALCULADORA SECTION VISUAL --- */
         .calc-section {
-            padding: 6rem 5%;
+            padding: 5rem 5%;
             background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
         }
 
@@ -220,13 +232,8 @@
             align-items: stretch;
         }
 
-        @media (max-width: 900px) {
-            .calc-grid { grid-template-columns: 1fr; gap: 35px; }
-            .calc-container { padding: 25px; }
-        }
-
         .form-group {
-            margin-bottom: 28px;
+            margin-bottom: 25px;
         }
 
         .form-group label {
@@ -260,7 +267,7 @@
             box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.12);
         }
 
-        /* Tarjeta de Resultado Dinámica Premium con Efecto Hover */
+        /* Tarjeta de Resultado Dinámica Premium */
         .result-card-premium {
             background: var(--primary);
             color: #fff;
@@ -272,17 +279,15 @@
             transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
             position: relative;
             border: 1px solid rgba(255,255,255,0.05);
-            min-height: 520px; /* Evita saltos de altura durante la carga */
+            min-height: 520px;
         }
 
-        /* Lift effect moderno */
         .result-card-premium:hover {
             transform: translateY(-8px);
             box-shadow: 0 30px 50px -15px rgba(14, 165, 233, 0.3);
             border-color: rgba(14, 165, 233, 0.3);
         }
 
-        /* Estado de Carga (Spinner) */
         .loading-state {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -320,7 +325,6 @@
             50% { opacity: 0.6; }
         }
 
-        /* Contenedor del contenido (Para la animación In/Out) */
         .result-content-anim {
             display: flex;
             flex-direction: column;
@@ -486,17 +490,20 @@
 
         /* --- STRATEGIC COMPARATIVE SECTION --- */
         .compare-section {
-            padding: 6rem 5%;
+            padding: 5rem 5%;
             background: #fff;
         }
 
         .compare-container {
             max-width: 1000px;
             margin: 0 auto;
+            overflow-x: auto; /* Permite scroll horizontal en móviles si es necesario */
+            padding-bottom: 10px;
         }
 
         .compare-table {
             width: 100%;
+            min-width: 600px; /* Asegura que la tabla no se rompa en móviles */
             border-collapse: separate;
             border-spacing: 0;
             background: #ffffff;
@@ -504,19 +511,14 @@
             overflow: hidden;
             box-shadow: var(--shadow-md);
             border: 1px solid #e2e8f0;
-            transition: box-shadow 0.4s ease;
-        }
-
-        .compare-table:hover {
-            box-shadow: var(--shadow-lg);
         }
 
         .compare-table th {
             background: var(--primary);
             color: #ffffff;
-            padding: 22px 25px;
+            padding: 20px 25px;
             font-weight: 600;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             text-align: left;
         }
 
@@ -526,11 +528,10 @@
         }
 
         .compare-table td {
-            padding: 18px 25px;
+            padding: 16px 20px;
             border-bottom: 1px solid #e2e8f0;
-            font-size: 0.98rem;
+            font-size: 0.95rem;
             color: var(--text-main);
-            transition: background 0.3s ease;
         }
 
         .compare-table tr:hover td {
@@ -542,8 +543,8 @@
         }
 
         .compare-table td i {
-            margin-right: 10px;
-            font-size: 1.1rem;
+            margin-right: 8px;
+            font-size: 1rem;
         }
 
         .compare-table td.text-danger-custom {
@@ -557,13 +558,9 @@
             background-color: rgba(37, 211, 102, 0.02);
         }
 
-        @media (max-width: 600px) {
-            .compare-table th, .compare-table td { padding: 12px 15px; font-size: 0.85rem; }
-        }
-
         /* --- CATALOG SECTION --- */
         .catalog-section {
-            padding: 6rem 5%;
+            padding: 5rem 5%;
             background: var(--bg-body);
             max-width: 1400px;
             margin: 0 auto;
@@ -573,9 +570,9 @@
             display: flex;
             align-items: center;
             gap: 15px;
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             color: var(--primary);
-            margin: 4rem 0 2rem;
+            margin: 3rem 0 2rem;
             font-weight: 700;
             border-left: 5px solid var(--accent);
             padding-left: 15px;
@@ -583,8 +580,8 @@
 
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 35px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
         }
 
         .card {
@@ -606,7 +603,7 @@
 
         .card-img-wrapper {
             position: relative;
-            padding: 35px;
+            padding: 30px;
             background: #fff;
             border-bottom: 1px solid #e2e8f0;
             text-align: center;
@@ -614,7 +611,7 @@
 
         .card-img {
             width: 100%;
-            height: 240px;
+            height: 220px;
             object-fit: contain;
             transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
@@ -624,48 +621,48 @@
         }
 
         .card-content {
-            padding: 30px;
+            padding: 25px;
             display: flex;
             flex-direction: column;
             flex-grow: 1;
         }
 
         .card-title {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             color: var(--primary);
-            margin-bottom: 6px;
+            margin-bottom: 5px;
             font-weight: 700;
         }
 
         .card-price {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             color: var(--accent);
             font-weight: 800;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             display: flex;
             align-items: baseline;
             gap: 5px;
         }
 
         .card-price span {
-            font-size: 1rem;
+            font-size: 0.9rem;
             font-weight: 400;
             color: var(--text-muted);
         }
 
         .specs-list {
             list-style: none;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             flex-grow: 1;
         }
 
         .specs-list li {
-            padding: 12px 0;
+            padding: 10px 0;
             border-bottom: 1px dashed #e2e8f0;
             display: flex;
             align-items: center;
             gap: 10px;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: var(--text-muted);
         }
 
@@ -673,7 +670,7 @@
             border-bottom: none;
         }
 
-        .specs-list li i { color: var(--accent); width: 20px; font-size: 1.05rem;}
+        .specs-list li i { color: var(--accent); width: 20px; font-size: 1rem;}
         .specs-list li strong { color: var(--primary); font-weight: 600; margin-right: auto;}
 
         .btn-card {
@@ -681,7 +678,7 @@
             text-align: center;
             background-color: var(--primary-light);
             color: white;
-            padding: 15px;
+            padding: 14px;
             border-radius: var(--radius-md);
             text-decoration: none;
             font-weight: 600;
@@ -702,7 +699,7 @@
             position: relative;
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             color: #ffffff;
-            padding: 6rem 5%;
+            padding: 5rem 5%;
             text-align: center;
             overflow: hidden;
         }
@@ -723,7 +720,7 @@
         }
 
         .final-cta-section h2 {
-            font-size: clamp(2.2rem, 4vw, 3.2rem);
+            font-size: clamp(1.8rem, 4vw, 3.2rem);
             font-weight: 800;
             letter-spacing: -1px;
             margin-bottom: 20px;
@@ -733,7 +730,7 @@
         }
 
         .final-cta-section p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: #cbd5e1;
             font-weight: 300;
             margin-bottom: 40px;
@@ -741,10 +738,10 @@
 
         .cta-badges-grid {
             display: flex;
-            gap: 25px;
+            gap: 15px;
             justify-content: center;
             flex-wrap: wrap;
-            margin-bottom: 45px;
+            margin-bottom: 40px;
             max-width: 700px;
             margin-inline: auto;
         }
@@ -752,9 +749,9 @@
         .cta-badge-item {
             background: rgba(255,255,255,0.05);
             border: 1px solid rgba(255,255,255,0.1);
-            padding: 12px 24px;
+            padding: 10px 20px;
             border-radius: 50px;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 500;
             display: flex;
             align-items: center;
@@ -773,31 +770,29 @@
             background: #090d16;
             color: #64748b;
             text-align: center;
-            padding: 4rem 5% 5rem;
+            padding: 3rem 5% 5rem;
             font-size: 0.9rem;
             border-top: 1px solid rgba(255,255,255,0.03);
         }
 
         footer .footer-logo {
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             font-weight: 700;
             color: #f8fafc;
             margin-bottom: 10px;
         }
 
-        footer p { margin-bottom: 5px; }
-
         .whatsapp-float {
             position: fixed;
-            width: 65px;
-            height: 65px;
-            bottom: 30px;
-            right: 30px;
+            width: 60px;
+            height: 60px;
+            bottom: 20px;
+            right: 20px;
             background-color: var(--whatsapp);
             color: #FFF;
             border-radius: 50%;
             text-align: center;
-            font-size: 35px;
+            font-size: 32px;
             box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
             z-index: 100;
             display: flex;
@@ -812,15 +807,72 @@
             background-color: var(--whatsapp-hover);
         }
 
+        /* =======================================================
+           ESPECIFICACIONES PARA MÓVILES (Optimización total)
+           ======================================================= */
         @media (max-width: 768px) {
-            .hero-buttons, .cta-badges-grid { flex-direction: column; gap: 15px; align-items: stretch; }
-            .btn { width: 100%; }
-            .cta-badge-item { justify-content: center; }
+            header {
+                /* Arregla el bug de fondo en iOS Safari */
+                background-attachment: scroll; 
+                padding: 3.5rem 15px;
+            }
+
+            header h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-buttons { 
+                flex-direction: column; 
+                gap: 15px; 
+                width: 100%;
+            }
+
+            .btn { 
+                width: 100%; 
+            }
+
+            .trust-badges { 
+                flex-direction: column; 
+                gap: 12px; 
+                align-items: center; 
+            }
+
+            .trust-badges span {
+                width: 100%;
+                justify-content: flex-start;
+                padding-left: 10%;
+                font-size: 0.95rem;
+            }
+
+            .calc-grid { 
+                grid-template-columns: 1fr; 
+                gap: 30px; 
+            }
+            
+            .calc-container { 
+                padding: 25px 20px; 
+            }
+
+            .cta-badges-grid {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .cta-badge-item {
+                justify-content: flex-start;
+                padding-left: 20px;
+            }
+            
+            .whatsapp-float {
+                bottom: 20px;
+                right: 20px;
+            }
         }
     </style>
 </head>
 <body>
 
+    <!-- HERO SECTION -->
     <header>
         <div class="hero-content">
             <h1>Alquila tu máquina de hielo desde ₡45.000 al mes</h1>
@@ -840,6 +892,7 @@
         </div>
     </header>
 
+    <!-- CALCULADORA VISUAL SECTION -->
     <section id="calculadora" class="calc-section">
         <div class="section-header reveal">
             <h2>¿Qué máquina necesita tu negocio?</h2>
@@ -848,6 +901,7 @@
         
         <div class="calc-container reveal">
             <div class="calc-grid">
+                <!-- Formulario -->
                 <div class="calc-form">
                     <div class="form-group">
                         <label for="bizType"><i class="fa-solid fa-store"></i> Tipo de Negocio</label>
@@ -866,6 +920,7 @@
                     </div>
                 </div>
 
+                <!-- Tarjeta de Resultado Premium Animada -->
                 <div class="result-card-premium">
                     
                     <div id="loadingState" class="loading-state">
@@ -909,6 +964,7 @@
         </div>
     </section>
 
+    <!-- BENEFITS SECTION -->
     <section class="benefits-section">
         <div class="section-header reveal">
             <h2>¿Qué incluye tu Renta Mensual?</h2>
@@ -943,6 +999,7 @@
         </div>
     </section>
 
+    <!-- STRATEGIC COMPARATIVE SECTION -->
     <section class="compare-section">
         <div class="section-header reveal">
             <h2>¿Por qué alquilar una máquina de hielo?</h2>
@@ -953,41 +1010,32 @@
                 <thead>
                     <tr>
                         <th>Característica</th>
-                        <th>Comprar hielo constantemente</th>
-                        <th class="highlight"><i class="fa-solid fa-star"></i> Alquilar una máquina</th>
+                        <th>Comprar constantemente</th>
+                        <th class="highlight"><i class="fa-solid fa-star"></i> Alquilar máquina</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td><strong>Control de Gastos</strong></td>
-                        <td class="text-danger-custom"><i class="fa-solid fa-arrow-trend-up"></i> Gasto continuo e impredecible</td>
-                        <td class="text-success-custom"><i class="fa-solid fa-wallet"></i> Pago mensual fijo predecible</td>
+                        <td class="text-danger-custom"><i class="fa-solid fa-arrow-trend-up"></i> Gasto impredecible</td>
+                        <td class="text-success-custom"><i class="fa-solid fa-wallet"></i> Pago fijo predecible</td>
                     </tr>
                     <tr>
                         <td><strong>Operación</strong></td>
-                        <td class="text-danger-custom"><i class="fa-solid fa-truck"></i> Dependencia total de proveedores</td>
-                        <td class="text-success-custom"><i class="fa-solid fa-gears"></i> Producción propia autónoma</td>
+                        <td class="text-danger-custom"><i class="fa-solid fa-truck"></i> Dependencia</td>
+                        <td class="text-success-custom"><i class="fa-solid fa-gears"></i> Producción propia</td>
                     </tr>
                     <tr>
                         <td><strong>Disponibilidad</strong></td>
-                        <td class="text-danger-custom"><i class="fa-solid fa-triangle-exclamation"></i> Riesgo constante de desabasto</td>
-                        <td class="text-success-custom"><i class="fa-solid fa-circle-check"></i> Suministro constante 24/7</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Logística</strong></td>
-                        <td class="text-danger-custom"><i class="fa-solid fa-user-clock"></i> Menor control y tiempo perdido</td>
-                        <td class="text-success-custom"><i class="fa-solid fa-bolt"></i> Total independencia operativa</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Costos ocultos</strong></td>
-                        <td class="text-danger-custom"><i class="fa-solid fa-calculator"></i> Costos variables por temporada</td>
-                        <td class="text-success-custom"><i class="fa-solid fa-shield"></i> Costos completamente controlados</td>
+                        <td class="text-danger-custom"><i class="fa-solid fa-triangle-exclamation"></i> Riesgo desabasto</td>
+                        <td class="text-success-custom"><i class="fa-solid fa-circle-check"></i> Constante 24/7</td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </section>
 
+    <!-- CATALOG SECTION -->
     <section id="catalogo" class="catalog-section">
         <div class="section-header reveal">
             <h2>Catálogo Corporativo de Equipos</h2>
@@ -996,6 +1044,7 @@
         
         <h3 class="brand-title reveal"><i class="fa-solid fa-snowflake"></i> Línea AICETRO</h3>
         <div class="grid-container">
+            <!-- Modelo SCI-035 -->
             <div class="card reveal">
                 <div class="card-img-wrapper">
                     <img src="img/SCI-035.png" alt="AICETRO SCI-035" class="card-img" onerror="this.src='https://via.placeholder.com/300x250?text=SCI-035'">
@@ -1009,11 +1058,12 @@
                         <li><i class="fa-solid fa-bolt"></i> <strong>Energía:</strong> 0.45 kWh/45kg</li>
                     </ul>
                     <a href="https://wa.me/50664701571?text=Hola%20Don%20Alex,%20estoy%20interesado%20en%20el%20modelo%20AICETRO%20SCI-035." target="_blank" class="btn-card">
-                        <i class="fa-brands fa-whatsapp"></i> Me interesa este modelo
+                        <i class="fa-brands fa-whatsapp"></i> Me interesa
                     </a>
                 </div>
             </div>
 
+            <!-- Modelo SCI-050 -->
             <div class="card reveal">
                 <div class="card-img-wrapper">
                     <img src="img/SCI-050.png" alt="AICETRO SCI-050" class="card-img" onerror="this.src='https://via.placeholder.com/300x250?text=SCI-050'">
@@ -1027,11 +1077,12 @@
                         <li><i class="fa-solid fa-bolt"></i> <strong>Energía:</strong> 0.8 kWh/45kg</li>
                     </ul>
                     <a href="https://wa.me/50664701571?text=Hola%20Don%20Alex,%20estoy%20interesado%20en%20el%20modelo%20AICETRO%20SCI-050." target="_blank" class="btn-card">
-                        <i class="fa-brands fa-whatsapp"></i> Me interesa este modelo
+                        <i class="fa-brands fa-whatsapp"></i> Me interesa
                     </a>
                 </div>
             </div>
 
+            <!-- Modelo SCI-090 -->
             <div class="card reveal">
                 <div class="card-img-wrapper">
                     <img src="img/SCI-090.png" alt="AICETRO SCI-090" class="card-img" onerror="this.src='https://via.placeholder.com/300x250?text=SCI-090'">
@@ -1045,11 +1096,12 @@
                         <li><i class="fa-solid fa-bolt"></i> <strong>Energía:</strong> 1.1 kWh/45kg</li>
                     </ul>
                     <a href="https://wa.me/50664701571?text=Hola%20Don%20Alex,%20estoy%20interesado%20en%20el%20modelo%20AICETRO%20SCI-090." target="_blank" class="btn-card">
-                        <i class="fa-brands fa-whatsapp"></i> Me interesa este modelo
+                        <i class="fa-brands fa-whatsapp"></i> Me interesa
                     </a>
                 </div>
             </div>
 
+            <!-- Modelo SCI-120A -->
             <div class="card reveal">
                 <div class="card-img-wrapper">
                     <img src="img/SCI-120A.png" alt="AICETRO SCI-120A" class="card-img" onerror="this.src='https://via.placeholder.com/300x250?text=SCI-120A'">
@@ -1063,11 +1115,12 @@
                         <li><i class="fa-solid fa-bolt"></i> <strong>Energía:</strong> 1.4 kWh/45kg</li>
                     </ul>
                     <a href="https://wa.me/50664701571?text=Hola%20Don%20Alex,%20estoy%20interesado%20en%20el%20modelo%20AICETRO%20SCI-120A." target="_blank" class="btn-card">
-                        <i class="fa-brands fa-whatsapp"></i> Me interesa este modelo
+                        <i class="fa-brands fa-whatsapp"></i> Me interesa
                     </a>
                 </div>
             </div>
 
+            <!-- Modelo IM-260AD -->
             <div class="card reveal">
                 <div class="card-img-wrapper">
                     <img src="img/IM-260AD.png" alt="AICETRO IM-260AD" class="card-img" onerror="this.src='https://via.placeholder.com/300x250?text=IM-260AD'">
@@ -1081,11 +1134,12 @@
                         <li><i class="fa-solid fa-bolt"></i> <strong>Energía:</strong> 1.25 kWh/45kg</li>
                     </ul>
                     <a href="https://wa.me/50664701571?text=Hola%20Don%20Alex,%20estoy%20interesado%20en%20el%20modelo%20AICETRO%20IM-260AD." target="_blank" class="btn-card">
-                        <i class="fa-brands fa-whatsapp"></i> Me interesa este modelo
+                        <i class="fa-brands fa-whatsapp"></i> Me interesa
                     </a>
                 </div>
             </div>
 
+            <!-- Modelo IM-500AD -->
             <div class="card reveal">
                 <div class="card-img-wrapper">
                     <img src="img/IM-500AD.png" alt="AICETRO IM-500AD" class="card-img" onerror="this.src='https://via.placeholder.com/300x250?text=IM-500AD'">
@@ -1099,14 +1153,15 @@
                         <li><i class="fa-solid fa-bolt"></i> <strong>Energía:</strong> 1.8 kWh/45kg</li>
                     </ul>
                     <a href="https://wa.me/50664701571?text=Hola%20Don%20Alex,%20estoy%20interesado%20en%20el%20modelo%20AICETRO%20IM-500AD." target="_blank" class="btn-card">
-                        <i class="fa-brands fa-whatsapp"></i> Me interesa este modelo
+                        <i class="fa-brands fa-whatsapp"></i> Me interesa
                     </a>
                 </div>
             </div>
         </div>
 
-        <h3 class="brand-title reveal" style="margin-top: 5rem;"><i class="fa-solid fa-icicles"></i> Línea Ice-O-Matic</h3>
+        <h3 class="brand-title reveal" style="margin-top: 4rem;"><i class="fa-solid fa-icicles"></i> Línea Ice-O-Matic</h3>
         <div class="grid-container">
+            <!-- Modelo MFI 500 -->
             <div class="card reveal">
                 <div class="card-img-wrapper">
                     <img src="img/MFI500.png" alt="Ice-O-Matic MFI 500" class="card-img" onerror="this.src='https://via.placeholder.com/300x250?text=MFI500'">
@@ -1120,11 +1175,12 @@
                         <li><i class="fa-solid fa-bolt"></i> <strong>Energía:</strong> 4.5 kWh/45kg</li>
                     </ul>
                     <a href="https://wa.me/50664701571?text=Hola%20Don%20Alex,%20estoy%20interesado%20en%20el%20modelo%20Ice-O-Matic%20MFI%20500." target="_blank" class="btn-card">
-                        <i class="fa-brands fa-whatsapp"></i> Me interesa este modelo
+                        <i class="fa-brands fa-whatsapp"></i> Me interesa
                     </a>
                 </div>
             </div>
 
+            <!-- Modelo MFI 800 -->
             <div class="card reveal">
                 <div class="card-img-wrapper">
                     <img src="img/MFI800.png" alt="Ice-O-Matic MFI 800" class="card-img" onerror="this.src='https://via.placeholder.com/300x250?text=MFI800'">
@@ -1138,13 +1194,14 @@
                         <li><i class="fa-solid fa-bolt"></i> <strong>Energía:</strong> 3.8 kWh/45kg</li>
                     </ul>
                     <a href="https://wa.me/50664701571?text=Hola%20Don%20Alex,%20estoy%20interesado%20en%20el%20modelo%20Ice-O-Matic%20MFI%20800." target="_blank" class="btn-card">
-                        <i class="fa-brands fa-whatsapp"></i> Me interesa este modelo
+                        <i class="fa-brands fa-whatsapp"></i> Me interesa
                     </a>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- FINAL PREMIUM CTA BLOCK -->
     <section class="final-cta-section">
         <div class="cta-container reveal">
             <h2>¿Listo para producir tu propio hielo?</h2>
@@ -1164,18 +1221,20 @@
         </div>
     </section>
 
+    <!-- FOOTER CORPORATIVO -->
     <footer>
         <div class="footer-logo">Don Alex</div>
         <p>Soluciones de Frío e Ingeniería Comercial S.A.</p>
         <p>Todos los derechos reservados &copy; 2026 | Catálogo Oficial de Alta Conversión</p>
     </footer>
 
+    <!-- BOTÓN FLOTANTE WHATSAPP -->
     <a href="https://wa.me/50664701571?text=Hola%20Don%20Alex,%20estoy%20viendo%20el%20catálogo%20y%20necesito%20ayuda." class="whatsapp-float" target="_blank">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
+    <!-- LOGICA SCRIPT INTERACTIVA (Con transiciones fluidas de calculadora) -->
     <script>
-        // Animaciones elegantes de scroll (Intersection Observer)
         const revealElements = document.querySelectorAll('.reveal');
         
         const revealCallback = (entries, observer) => {
@@ -1194,101 +1253,68 @@
         const revealObserver = new IntersectionObserver(revealCallback, revealOptions);
         revealElements.forEach(el => revealObserver.observe(el));
 
-        // Base de Datos Estructural del Catálogo para la Calculadora Visual
         const catalogData = {
             "SCI-035": {
-                name: "AICETRO SCI-035",
-                prod: "36 kg / 24h",
-                price: "₡ 45,000",
-                img: "img/SCI-035.png",
-                badge: "⭐ Recomendación ideal",
+                name: "AICETRO SCI-035", prod: "36 kg / 24h", price: "₡ 45,000",
+                img: "img/SCI-035.png", badge: "⭐ Recomendación ideal",
                 desc: "Según el consumo indicado, recomendamos este modelo porque puede cubrir cómodamente la demanda diaria de tu negocio sin generar costos innecesarios de energía ni espacio."
             },
             "SCI-050": {
-                name: "AICETRO SCI-050",
-                prod: "58 kg / 24h",
-                price: "₡ 55,000",
-                img: "img/SCI-050.png",
-                badge: "✅ Mejor relación capacidad/precio",
+                name: "AICETRO SCI-050", prod: "58 kg / 24h", price: "₡ 55,000",
+                img: "img/SCI-050.png", badge: "✅ Mejor relación capacidad/precio",
                 desc: "Este equipo ofrece un balance extraordinario de almacenamiento. Es el modelo más rentable para flujos estables y constantes en negocios de comida."
             },
             "SCI-090": {
-                name: "AICETRO SCI-090",
-                prod: "97 kg / 24h",
-                price: "₡ 90,000",
-                img: "img/SCI-090.png",
-                badge: "⭐ Recomendación ideal",
+                name: "AICETRO SCI-090", prod: "97 kg / 24h", price: "₡ 90,000",
+                img: "img/SCI-090.png", badge: "⭐ Recomendación ideal",
                 desc: "Recomendamos este modelo industrial porque asegura un suministro abundante de casi 100 kilos diarios, cubriendo horas pico sin pausas operativas peligrosas."
             },
             "SCI-120A": {
-                name: "AICETRO SCI-120A",
-                prod: "112 kg / 24h",
-                price: "₡ 130,000",
-                img: "img/SCI-120A.png",
-                badge: "🔥 El más solicitado",
+                name: "AICETRO SCI-120A", prod: "112 kg / 24h", price: "₡ 130,000",
+                img: "img/SCI-120A.png", badge: "🔥 El más solicitado",
                 desc: "Diseñado específicamente para soportar demandas agresivas de hielo en entornos nocturnos y de coctelería masiva. Sólido y veloz."
             },
             "MFI500": {
-                name: "Ice-O-Matic MFI 500",
-                prod: "245 kg / 24h",
-                price: "₡ 130,000",
-                img: "img/MFI500.png",
-                badge: "⚡ Rendimiento Avanzado",
+                name: "Ice-O-Matic MFI 500", prod: "245 kg / 24h", price: "₡ 130,000",
+                img: "img/MFI500.png", badge: "⚡ Rendimiento Avanzado",
                 desc: "Con un almacenamiento imponente de 232 kg, esta unidad garantiza que tu barra nunca se quede vacía, optimizando cada metro cuadrado."
             },
             "IM-260AD": {
-                name: "AICETRO IM-260AD",
-                prod: "272 kg / 24h",
-                price: "₡ 180,000",
-                img: "img/IM-260AD.png",
-                badge: "🚀 Máxima Capacidad de Almacenaje",
+                name: "AICETRO IM-260AD", prod: "272 kg / 24h", price: "₡ 180,000",
+                img: "img/IM-260AD.png", badge: "🚀 Máxima Capacidad de Almacenaje",
                 desc: "Ideal para la conservación masiva en supermercados o pescaderías que requieren camas de hielo consistentes de alta durabilidad."
             },
             "MFI800": {
-                name: "Ice-O-Matic MFI 800",
-                prod: "426 kg / 24h",
-                price: "₡ 175,000",
-                img: "img/MFI800.png",
-                badge: "💎 Rendimiento Comercial Premium",
+                name: "Ice-O-Matic MFI 800", prod: "426 kg / 24h", price: "₡ 175,000",
+                img: "img/MFI800.png", badge: "💎 Rendimiento Comercial Premium",
                 desc: "Diseño americano de alta gama concebido para flujos de trabajo extremos. Una máquina indestructible que amortiza cada colón invertido."
             },
             "IM-500AD": {
-                name: "AICETRO IM-500AD",
-                prod: "501 kg / 24h",
-                price: "₡ 275,000",
-                img: "img/IM-500AD.png",
-                badge: "👑 El Gigante Industrial",
+                name: "AICETRO IM-500AD", prod: "501 kg / 24h", price: "₡ 275,000",
+                img: "img/IM-500AD.png", badge: "👑 El Gigante Industrial",
                 desc: "Produce media tonelada de hielo al día. Es la solución definitiva para complejos hoteleros que necesitan abastecer múltiples estaciones simultáneamente."
             }
         };
 
-        // Estado de la animación para prevenir clics spam
         let isCalculating = false;
         let isInitialLoad = true;
 
-        // Función Principal Animada de Recomendación
         function triggerCalculation() {
-            if (isCalculating) return; // Bloquea si ya está animando
+            if (isCalculating) return; 
             isCalculating = true;
 
             const bizType = document.getElementById('bizType').value;
             const kgInputRaw = document.getElementById('kgInput').value;
             let kg = parseInt(kgInputRaw);
 
-            // Predicción inteligente si no se digita valor manual
             if (!kgInputRaw || isNaN(kg)) {
                 const baselines = {
-                    'cafeteria': 35,
-                    'restaurante': 85,
-                    'bar': 140,
-                    'supermercado': 300,
-                    'hotel': 490,
-                    'otro': 90
+                    'cafeteria': 35, 'restaurante': 85, 'bar': 140,
+                    'supermercado': 300, 'hotel': 490, 'otro': 90
                 };
                 kg = baselines[bizType];
             }
 
-            // Selector lógico
             let targetKey = "SCI-050";
             if (kg <= 36) targetKey = "SCI-035";
             else if (kg <= 58) targetKey = "SCI-050";
@@ -1304,35 +1330,25 @@
             const loadingDiv = document.getElementById('loadingState');
 
             if (isInitialLoad) {
-                // Carga inicial directa sin transición de salida
                 updateCardData(model);
                 isInitialLoad = false;
                 isCalculating = false;
             } else {
-                // 1. Animación de Salida
                 contentDiv.classList.add('fade-out');
                 loadingDiv.classList.add('active');
 
-                // 2. Simulación de "Procesamiento de datos" (450ms)
                 setTimeout(() => {
                     updateCardData(model);
-                    
-                    // 3. Quitar Loading y Animación de Entrada
                     loadingDiv.classList.remove('active');
-                    
-                    // Forzar el "reflow" para que CSS aplique la transición de vuelta
                     void contentDiv.offsetWidth; 
-                    
                     contentDiv.classList.remove('fade-out');
                     
-                    // Desbloquear función
                     setTimeout(() => { isCalculating = false; }, 400);
 
                 }, 450);
             }
         }
 
-        // Subfunción para inyectar la data en el DOM
         function updateCardData(model) {
             document.getElementById('resBadge').innerText = model.badge;
             document.getElementById('resImg').src = model.img;
@@ -1342,12 +1358,10 @@
             document.getElementById('resPrice').innerText = model.price + " / mes";
             document.getElementById('resDesc').innerText = model.desc;
             
-            // Link de WhatsApp enfocado a cerrar venta
             const msg = `Hola, utilicé la calculadora y me recomendaron el modelo ${model.name}. Quiero recibir una cotización.`;
             document.getElementById('resWhatsapp').href = `https://wa.me/50664701571?text=${encodeURIComponent(msg)}`;
         }
 
-        // Ejecutar en cuanto cargue la página
         window.onload = triggerCalculation;
     </script>
 </body>
