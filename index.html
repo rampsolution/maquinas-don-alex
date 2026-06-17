@@ -260,18 +260,79 @@
             box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.12);
         }
 
-        /* Tarjeta de Resultado Dinámica Premium */
+        /* Tarjeta de Resultado Dinámica Premium con Efecto Hover */
         .result-card-premium {
             background: var(--primary);
             color: #fff;
             border-radius: var(--radius-lg);
             overflow: hidden;
-            box-shadow: var(--shadow-lg);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
             display: flex;
             flex-direction: column;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
             position: relative;
             border: 1px solid rgba(255,255,255,0.05);
+            min-height: 520px; /* Evita saltos de altura durante la carga */
+        }
+
+        /* Lift effect moderno */
+        .result-card-premium:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 50px -15px rgba(14, 165, 233, 0.3);
+            border-color: rgba(14, 165, 233, 0.3);
+        }
+
+        /* Estado de Carga (Spinner) */
+        .loading-state {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary);
+            z-index: 10;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .loading-state.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .loading-state i {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        .loading-state p {
+            color: #cbd5e1;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
+        /* Contenedor del contenido (Para la animación In/Out) */
+        .result-content-anim {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            opacity: 1;
+            transform: scale(1) translateY(0);
+            transition: opacity 0.4s ease, transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .result-content-anim.fade-out {
+            opacity: 0;
+            transform: scale(0.96) translateY(15px);
         }
 
         .result-badge {
@@ -287,6 +348,7 @@
             letter-spacing: 0.5px;
             box-shadow: 0 4px 10px rgba(245, 158, 11, 0.3);
             z-index: 5;
+            transition: all 0.3s ease;
         }
 
         .result-visual-wrapper {
@@ -298,16 +360,18 @@
             justify-content: center;
             min-height: 220px;
             border-bottom: 1px solid rgba(255,255,255,0.1);
+            position: relative;
+            overflow: hidden;
         }
 
         .result-img {
             max-height: 180px;
             object-fit: contain;
-            transition: transform 0.4s ease;
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         .result-card-premium:hover .result-img {
-            transform: scale(1.06);
+            transform: scale(1.08) translateY(-5px);
         }
 
         .result-body {
@@ -340,6 +404,11 @@
             background: rgba(255,255,255,0.04);
             padding: 15px;
             border-radius: var(--radius-md);
+            transition: background 0.3s ease;
+        }
+
+        .result-card-premium:hover .result-metrics-grid {
+            background: rgba(255,255,255,0.08);
         }
 
         .metric-box span {
@@ -380,7 +449,7 @@
             padding: 40px 25px;
             border-radius: var(--radius-lg);
             text-align: center;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             border: 1px solid #f1f5f9;
         }
 
@@ -395,11 +464,11 @@
             font-size: 2.5rem;
             color: var(--accent);
             margin-bottom: 20px;
-            transition: transform 0.3s ease;
+            transition: transform 0.4s ease;
         }
 
         .benefit-item:hover .benefit-icon {
-            transform: scale(1.1);
+            transform: scale(1.15);
         }
 
         .benefit-item h3 {
@@ -415,7 +484,7 @@
             line-height: 1.5;
         }
 
-        /* --- COMPARATIVE STRATEGIC SECTION --- */
+        /* --- STRATEGIC COMPARATIVE SECTION --- */
         .compare-section {
             padding: 6rem 5%;
             background: #fff;
@@ -435,6 +504,11 @@
             overflow: hidden;
             box-shadow: var(--shadow-md);
             border: 1px solid #e2e8f0;
+            transition: box-shadow 0.4s ease;
+        }
+
+        .compare-table:hover {
+            box-shadow: var(--shadow-lg);
         }
 
         .compare-table th {
@@ -456,14 +530,15 @@
             border-bottom: 1px solid #e2e8f0;
             font-size: 0.98rem;
             color: var(--text-main);
+            transition: background 0.3s ease;
+        }
+
+        .compare-table tr:hover td {
+            background: #f8fafc;
         }
 
         .compare-table tr:last-child td {
             border-bottom: none;
-        }
-
-        .compare-table tr:nth-child(even) {
-            background: #f8fafc;
         }
 
         .compare-table td i {
@@ -541,11 +616,11 @@
             width: 100%;
             height: 240px;
             object-fit: contain;
-            transition: transform 0.4s ease;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         .card:hover .card-img {
-            transform: scale(1.04);
+            transform: scale(1.06) translateY(-5px);
         }
 
         .card-content {
@@ -776,7 +851,7 @@
                 <div class="calc-form">
                     <div class="form-group">
                         <label for="bizType"><i class="fa-solid fa-store"></i> Tipo de Negocio</label>
-                        <select id="bizType" class="form-control" onchange="calculateModel()">
+                        <select id="bizType" class="form-control" onchange="triggerCalculation()">
                             <option value="cafeteria">Cafetería pequeña / Heladería</option>
                             <option value="restaurante">Restaurante mediano</option>
                             <option value="bar">Bar / Discoteca</option>
@@ -787,37 +862,47 @@
                     </div>
                     <div class="form-group">
                         <label for="kgInput"><i class="fa-solid fa-cubes"></i> Consumo estimado de hielo (kg/día) <span style="font-weight:400; font-size:0.8rem; color:#64748b;">*Opcional</span></label>
-                        <input type="number" id="kgInput" class="form-control" placeholder="Ej. 60" oninput="calculateModel()">
+                        <input type="number" id="kgInput" class="form-control" placeholder="Ej. 60" oninput="triggerCalculation()">
                     </div>
                 </div>
 
-                <div class="result-card-premium" id="resultCard">
-                    <div class="result-badge" id="resBadge">⭐ Recomendación ideal</div>
-                    <div class="result-visual-wrapper">
-                        <img src="img/SCI-050.png" alt="Recomendación" class="result-img" id="resImg">
+                <div class="result-card-premium">
+                    
+                    <div id="loadingState" class="loading-state">
+                        <i class="fa-solid fa-circle-notch fa-spin"></i>
+                        <p>Analizando la mejor opción...</p>
                     </div>
-                    <div class="result-body">
-                        <div class="result-header-text">
-                            <h4>Modelo Recomendado</h4>
-                            <div class="result-model-title" id="resModel">AICETRO SCI-050</div>
+
+                    <div id="resultContent" class="result-content-anim">
+                        <div class="result-badge" id="resBadge">⭐ Recomendación ideal</div>
+                        
+                        <div class="result-visual-wrapper">
+                            <img src="img/SCI-050.png" alt="Recomendación" class="result-img" id="resImg">
                         </div>
                         
-                        <div class="result-metrics-grid">
-                            <div class="metric-box">
-                                <span>Producción diaria</span>
-                                <strong id="resProd">58 kg / 24h</strong>
+                        <div class="result-body">
+                            <div class="result-header-text">
+                                <h4>Modelo Recomendado</h4>
+                                <div class="result-model-title" id="resModel">AICETRO SCI-050</div>
                             </div>
-                            <div class="metric-box">
-                                <span>Precio mensual</span>
-                                <strong id="resPrice">₡ 55,000</strong>
+                            
+                            <div class="result-metrics-grid">
+                                <div class="metric-box">
+                                    <span>Producción diaria</span>
+                                    <strong id="resProd">58 kg / 24h</strong>
+                                </div>
+                                <div class="metric-box">
+                                    <span>Precio mensual</span>
+                                    <strong id="resPrice">₡ 55,000</strong>
+                                </div>
                             </div>
+                            
+                            <p class="result-desc-text" id="resDesc">Cargando recomendación...</p>
+                            
+                            <a href="#" id="resWhatsapp" class="btn btn-whatsapp-action" target="_blank">
+                                <i class="fa-brands fa-whatsapp"></i> Solicitar por WhatsApp
+                            </a>
                         </div>
-                        
-                        <p class="result-desc-text" id="resDesc">Cargando recomendación...</p>
-                        
-                        <a href="#" id="resWhatsapp" class="btn btn-whatsapp-action" target="_blank">
-                            <i class="fa-brands fa-whatsapp"></i> Solicitar esta máquina por WhatsApp
-                        </a>
                     </div>
                 </div>
             </div>
@@ -1117,7 +1202,6 @@
                 price: "₡ 45,000",
                 img: "img/SCI-035.png",
                 badge: "⭐ Recomendación ideal",
-                biz: "Cafeterías Pequeñas / Licoreras",
                 desc: "Según el consumo indicado, recomendamos este modelo porque puede cubrir cómodamente la demanda diaria de tu negocio sin generar costos innecesarios de energía ni espacio."
             },
             "SCI-050": {
@@ -1126,7 +1210,6 @@
                 price: "₡ 55,000",
                 img: "img/SCI-050.png",
                 badge: "✅ Mejor relación capacidad/precio",
-                biz: "Cafeterías Medianas / Restaurantes Pequeños",
                 desc: "Este equipo ofrece un balance extraordinario de almacenamiento. Es el modelo más rentable para flujos estables y constantes en negocios de comida."
             },
             "SCI-090": {
@@ -1135,7 +1218,6 @@
                 price: "₡ 90,000",
                 img: "img/SCI-090.png",
                 badge: "⭐ Recomendación ideal",
-                biz: "Restaurantes Medianos / Gastronomía",
                 desc: "Recomendamos este modelo industrial porque asegura un suministro abundante de casi 100 kilos diarios, cubriendo horas pico sin pausas operativas peligrosas."
             },
             "SCI-120A": {
@@ -1143,8 +1225,7 @@
                 prod: "112 kg / 24h",
                 price: "₡ 130,000",
                 img: "img/SCI-120A.png",
-                badge: "🔥 El más solicitado para Bares",
-                biz: "Bares Medianos / Coctelería Frecuente",
+                badge: "🔥 El más solicitado",
                 desc: "Diseñado específicamente para soportar demandas agresivas de hielo en entornos nocturnos y de coctelería masiva. Sólido y veloz."
             },
             "MFI500": {
@@ -1152,8 +1233,7 @@
                 prod: "245 kg / 24h",
                 price: "₡ 130,000",
                 img: "img/MFI500.png",
-                badge: "⚡ Rendimiento Comercial Avanzado",
-                biz: "Bares Grandes / Discotecas",
+                badge: "⚡ Rendimiento Avanzado",
                 desc: "Con un almacenamiento imponente de 232 kg, esta unidad garantiza que tu barra nunca se quede vacía, optimizando cada metro cuadrado."
             },
             "IM-260AD": {
@@ -1162,7 +1242,6 @@
                 price: "₡ 180,000",
                 img: "img/IM-260AD.png",
                 badge: "🚀 Máxima Capacidad de Almacenaje",
-                biz: "Supermercados / Grandes Restaurantes",
                 desc: "Ideal para la conservación masiva en supermercados o pescaderías que requieren camas de hielo consistentes de alta durabilidad."
             },
             "MFI800": {
@@ -1171,7 +1250,6 @@
                 price: "₡ 175,000",
                 img: "img/MFI800.png",
                 badge: "💎 Rendimiento Comercial Premium",
-                biz: "Centros de Distribución / Eventos Masivos",
                 desc: "Diseño americano de alta gama concebido para flujos de trabajo extremos. Una máquina indestructible que amortiza cada colón invertido."
             },
             "IM-500AD": {
@@ -1179,19 +1257,25 @@
                 prod: "501 kg / 24h",
                 price: "₡ 275,000",
                 img: "img/IM-500AD.png",
-                badge: "👑 El Gigante Industrial Definitivo",
-                biz: "Hoteles / Complejos Turísticos",
+                badge: "👑 El Gigante Industrial",
                 desc: "Produce media tonelada de hielo al día. Es la solución definitiva para complejos hoteleros que necesitan abastecer múltiples estaciones simultáneamente."
             }
         };
 
-        // Algoritmo Dinámico de la Calculadora Visual
-        function calculateModel() {
+        // Estado de la animación para prevenir clics spam
+        let isCalculating = false;
+        let isInitialLoad = true;
+
+        // Función Principal Animada de Recomendación
+        function triggerCalculation() {
+            if (isCalculating) return; // Bloquea si ya está animando
+            isCalculating = true;
+
             const bizType = document.getElementById('bizType').value;
             const kgInputRaw = document.getElementById('kgInput').value;
             let kg = parseInt(kgInputRaw);
 
-            // Cálculo predictivo si el campo numérico queda en blanco
+            // Predicción inteligente si no se digita valor manual
             if (!kgInputRaw || isNaN(kg)) {
                 const baselines = {
                     'cafeteria': 35,
@@ -1204,7 +1288,7 @@
                 kg = baselines[bizType];
             }
 
-            // Selector inteligente según el volumen de carga
+            // Selector lógico
             let targetKey = "SCI-050";
             if (kg <= 36) targetKey = "SCI-035";
             else if (kg <= 58) targetKey = "SCI-050";
@@ -1216,32 +1300,55 @@
             else targetKey = "IM-500AD";
 
             const model = catalogData[targetKey];
+            const contentDiv = document.getElementById('resultContent');
+            const loadingDiv = document.getElementById('loadingState');
 
-            // Renderizado Dinámico con Efecto Transición
-            const card = document.getElementById('resultCard');
-            card.style.transform = "scale(0.98)";
-            card.style.opacity = "0.9";
+            if (isInitialLoad) {
+                // Carga inicial directa sin transición de salida
+                updateCardData(model);
+                isInitialLoad = false;
+                isCalculating = false;
+            } else {
+                // 1. Animación de Salida
+                contentDiv.classList.add('fade-out');
+                loadingDiv.classList.add('active');
 
-            setTimeout(() => {
-                document.getElementById('resBadge').innerText = model.badge;
-                document.getElementById('resImg').src = model.img;
-                document.getElementById('resImg').alt = model.name;
-                document.getElementById('resModel').innerText = model.name;
-                document.getElementById('resProd').innerText = model.prod;
-                document.getElementById('resPrice').innerText = model.price + " / mes";
-                document.getElementById('resDesc').innerText = model.desc;
-                
-                // Formulación del enlace WhatsApp enfocado a conversión
-                const msg = `Hola, utilicé la calculadora y me recomendaron el modelo ${model.name}. Quiero recibir una cotización.`;
-                document.getElementById('resWhatsapp').href = `https://wa.me/50664701571?text=${encodeURIComponent(msg)}`;
-                
-                card.style.transform = "scale(1)";
-                card.style.opacity = "1";
-            }, 150);
+                // 2. Simulación de "Procesamiento de datos" (450ms)
+                setTimeout(() => {
+                    updateCardData(model);
+                    
+                    // 3. Quitar Loading y Animación de Entrada
+                    loadingDiv.classList.remove('active');
+                    
+                    // Forzar el "reflow" para que CSS aplique la transición de vuelta
+                    void contentDiv.offsetWidth; 
+                    
+                    contentDiv.classList.remove('fade-out');
+                    
+                    // Desbloquear función
+                    setTimeout(() => { isCalculating = false; }, 400);
+
+                }, 450);
+            }
         }
 
-        // Arranque Inicial Automatizado
-        window.onload = calculateModel;
+        // Subfunción para inyectar la data en el DOM
+        function updateCardData(model) {
+            document.getElementById('resBadge').innerText = model.badge;
+            document.getElementById('resImg').src = model.img;
+            document.getElementById('resImg').alt = model.name;
+            document.getElementById('resModel').innerText = model.name;
+            document.getElementById('resProd').innerText = model.prod;
+            document.getElementById('resPrice').innerText = model.price + " / mes";
+            document.getElementById('resDesc').innerText = model.desc;
+            
+            // Link de WhatsApp enfocado a cerrar venta
+            const msg = `Hola, utilicé la calculadora y me recomendaron el modelo ${model.name}. Quiero recibir una cotización.`;
+            document.getElementById('resWhatsapp').href = `https://wa.me/50664701571?text=${encodeURIComponent(msg)}`;
+        }
+
+        // Ejecutar en cuanto cargue la página
+        window.onload = triggerCalculation;
     </script>
 </body>
 </html>
