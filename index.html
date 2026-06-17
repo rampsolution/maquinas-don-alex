@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Máquinas de Hielo Don Alex | Alquiler Premium</title>
     
-    <!-- Google Fonts: Poppins -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Font Awesome para Iconos Profesionales -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -37,7 +35,6 @@
             scroll-behavior: smooth;
         }
 
-        /* Solución para la franja blanca lateral en móviles */
         html, body {
             width: 100%;
             max-width: 100vw;
@@ -49,7 +46,7 @@
             color: var(--text-main);
         }
 
-        /* --- SISTEMA DE ANIMACIONES SUAVES --- */
+        /* --- ANIMACIONES DE ENTRADA (SCROLL) --- */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
@@ -89,7 +86,7 @@
             font-weight: 800;
             line-height: 1.15;
             margin-bottom: 25px;
-            letter-spacing: -1.5px;
+            letter-spacing: -1px;
             background: linear-gradient(to right, #ffffff, #e0f2fe);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -267,7 +264,7 @@
             box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.12);
         }
 
-        /* Tarjeta de Resultado Dinámica Premium */
+        /* Tarjeta de Resultado Dinámica Premium con microinteracciones de nivel SaaS */
         .result-card-premium {
             background: var(--primary);
             color: #fff;
@@ -276,7 +273,7 @@
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
             display: flex;
             flex-direction: column;
-            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease, border-color 0.4s ease;
             position: relative;
             border: 1px solid rgba(255,255,255,0.05);
             min-height: 520px;
@@ -288,6 +285,7 @@
             border-color: rgba(14, 165, 233, 0.3);
         }
 
+        /* Spinner Async Interactivo */
         .loading-state {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -299,7 +297,7 @@
             z-index: 10;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.2s ease;
         }
 
         .loading-state.active {
@@ -331,7 +329,7 @@
             height: 100%;
             opacity: 1;
             transform: scale(1) translateY(0);
-            transition: opacity 0.4s ease, transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+            transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
 
         .result-content-anim.fade-out {
@@ -352,7 +350,6 @@
             letter-spacing: 0.5px;
             box-shadow: 0 4px 10px rgba(245, 158, 11, 0.3);
             z-index: 5;
-            transition: all 0.3s ease;
         }
 
         .result-visual-wrapper {
@@ -488,7 +485,7 @@
             line-height: 1.5;
         }
 
-        /* --- STRATEGIC COMPARATIVE SECTION (100% RESTAURADA) --- */
+        /* --- STRATEGIC COMPARATIVE SECTION (100% Completa) --- */
         .compare-section {
             padding: 5rem 5%;
             background: #fff;
@@ -497,13 +494,13 @@
         .compare-container {
             max-width: 1000px;
             margin: 0 auto;
-            overflow-x: auto; /* Permite scroll horizontal en móviles sin romper la pantalla */
+            overflow-x: auto;
             padding-bottom: 10px;
         }
 
         .compare-table {
             width: 100%;
-            min-width: 700px; /* Asegura que la tabla nunca se achique demasiado */
+            min-width: 700px;
             border-collapse: separate;
             border-spacing: 0;
             background: #ffffff;
@@ -807,9 +804,7 @@
             background-color: var(--whatsapp-hover);
         }
 
-        /* =======================================================
-           ESPECIFICACIONES PARA MÓVILES (Optimización total)
-           ======================================================= */
+        /* ESPECIFICACIONES PARA MÓVILES */
         @media (max-width: 768px) {
             header {
                 background-attachment: scroll; 
@@ -871,7 +866,6 @@
 </head>
 <body>
 
-    <!-- HERO SECTION -->
     <header>
         <div class="hero-content">
             <h1>Alquila tu máquina de hielo desde ₡45.000 al mes</h1>
@@ -891,7 +885,6 @@
         </div>
     </header>
 
-    <!-- CALCULADORA VISUAL SECTION -->
     <section id="calculadora" class="calc-section">
         <div class="section-header reveal">
             <h2>¿Qué máquina necesita tu negocio?</h2>
@@ -900,7 +893,6 @@
         
         <div class="calc-container reveal">
             <div class="calc-grid">
-                <!-- Formulario -->
                 <div class="calc-form">
                     <div class="form-group">
                         <label for="bizType"><i class="fa-solid fa-store"></i> Tipo de Negocio</label>
@@ -919,7 +911,6 @@
                     </div>
                 </div>
 
-                <!-- Tarjeta de Resultado Premium Animada -->
                 <div class="result-card-premium">
                     
                     <div id="loadingState" class="loading-state">
@@ -963,7 +954,6 @@
         </div>
     </section>
 
-    <!-- BENEFITS SECTION -->
     <section class="benefits-section">
         <div class="section-header reveal">
             <h2>¿Qué incluye tu Renta Mensual?</h2>
@@ -998,7 +988,6 @@
         </div>
     </section>
 
-    <!-- STRATEGIC COMPARATIVE SECTION (RESTAURADA) -->
     <section class="compare-section">
         <div class="section-header reveal">
             <h2>¿Por qué alquilar una máquina de hielo?</h2>
@@ -1044,7 +1033,6 @@
         </div>
     </section>
 
-    <!-- CATALOG SECTION -->
     <section id="catalogo" class="catalog-section">
         <div class="section-header reveal">
             <h2>Catálogo Corporativo de Equipos</h2>
@@ -1053,7 +1041,6 @@
         
         <h3 class="brand-title reveal"><i class="fa-solid fa-snowflake"></i> Línea AICETRO</h3>
         <div class="grid-container">
-            <!-- Modelo SCI-035 -->
             <div class="card reveal">
                 <div class="card-img-wrapper">
                     <img src="img/SCI-035.png" alt="AICETRO SCI-035" class="card-img" onerror="this.src='https://via.placeholder.com/300x250?text=SCI-035'">
@@ -1067,12 +1054,11 @@
                         <li><i class="fa-solid fa-bolt"></i> <strong>Energía:</strong> 0.45 kWh/45kg</li>
                     </ul>
                     <a href="https://wa.me/50664701571?text=Hola%20Don%20Alex,%20estoy%20interesado%20en%20el%20modelo%20AICETRO%20SCI-035." target="_blank" class="btn-card">
-                        <i class="fa-brands fa-whatsapp"></i> Me interesa
+                        <i class="fa-brands fa-whatsapp"></i> Me interesa este modelo
                     </a>
                 </div>
             </div>
 
-            <!-- Modelo SCI-050 -->
             <div class="card reveal">
                 <div class="card-img-wrapper">
                     <img src="img/SCI-050.png" alt="AICETRO SCI-050" class="card-img" onerror="this.src='https://via.placeholder.com/300x250?text=SCI-050'">
@@ -1086,12 +1072,11 @@
                         <li><i class="fa-solid fa-bolt"></i> <strong>Energía:</strong> 0.8 kWh/45kg</li>
                     </ul>
                     <a href="https://wa.me/50664701571?text=Hola%20Don%20Alex,%20estoy%20interesado%20en%20el%20modelo%20AICETRO%20SCI-050." target="_blank" class="btn-card">
-                        <i class="fa-brands fa-whatsapp"></i> Me interesa
+                        <i class="fa-brands fa-whatsapp"></i> Me interesa este modelo
                     </a>
                 </div>
             </div>
 
-            <!-- Modelo SCI-090 -->
             <div class="card reveal">
                 <div class="card-img-wrapper">
                     <img src="img/SCI-090.png" alt="AICETRO SCI-090" class="card-img" onerror="this.src='https://via.placeholder.com/300x250?text=SCI-090'">
@@ -1105,12 +1090,11 @@
                         <li><i class="fa-solid fa-bolt"></i> <strong>Energía:</strong> 1.1 kWh/45kg</li>
                     </ul>
                     <a href="https://wa.me/50664701571?text=Hola%20Don%20Alex,%20estoy%20interesado%20en%20el%20modelo%20AICETRO%20SCI-090." target="_blank" class="btn-card">
-                        <i class="fa-brands fa-whatsapp"></i> Me interesa
+                        <i class="fa-brands fa-whatsapp"></i> Me interesa este modelo
                     </a>
                 </div>
             </div>
 
-            <!-- Modelo SCI-120A -->
             <div class="card reveal">
                 <div class="card-img-wrapper">
                     <img src="img/SCI-120A.png" alt="AICETRO SCI-120A" class="card-img" onerror="this.src='https://via.placeholder.com/300x250?text=SCI-120A'">
@@ -1124,12 +1108,11 @@
                         <li><i class="fa-solid fa-bolt"></i> <strong>Energía:</strong> 1.4 kWh/45kg</li>
                     </ul>
                     <a href="https://wa.me/50664701571?text=Hola%20Don%20Alex,%20estoy%20interesado%20en%20el%20modelo%20AICETRO%20SCI-120A." target="_blank" class="btn-card">
-                        <i class="fa-brands fa-whatsapp"></i> Me interesa
+                        <i class="fa-brands fa-whatsapp"></i> Me interesa este modelo
                     </a>
                 </div>
             </div>
 
-            <!-- Modelo IM-260AD -->
             <div class="card reveal">
                 <div class="card-img-wrapper">
                     <img src="img/IM-260AD.png" alt="AICETRO IM-260AD" class="card-img" onerror="this.src='https://via.placeholder.com/300x250?text=IM-260AD'">
@@ -1143,12 +1126,11 @@
                         <li><i class="fa-solid fa-bolt"></i> <strong>Energía:</strong> 1.25 kWh/45kg</li>
                     </ul>
                     <a href="https://wa.me/50664701571?text=Hola%20Don%20Alex,%20estoy%20interesado%20en%20el%20modelo%20AICETRO%20IM-260AD." target="_blank" class="btn-card">
-                        <i class="fa-brands fa-whatsapp"></i> Me interesa
+                        <i class="fa-brands fa-whatsapp"></i> Me interesa este modelo
                     </a>
                 </div>
             </div>
 
-            <!-- Modelo IM-500AD -->
             <div class="card reveal">
                 <div class="card-img-wrapper">
                     <img src="img/IM-500AD.png" alt="AICETRO IM-500AD" class="card-img" onerror="this.src='https://via.placeholder.com/300x250?text=IM-500AD'">
@@ -1162,7 +1144,7 @@
                         <li><i class="fa-solid fa-bolt"></i> <strong>Energía:</strong> 1.8 kWh/45kg</li>
                     </ul>
                     <a href="https://wa.me/50664701571?text=Hola%20Don%20Alex,%20estoy%20interesado%20en%20el%20modelo%20AICETRO%20IM-500AD." target="_blank" class="btn-card">
-                        <i class="fa-brands fa-whatsapp"></i> Me interesa
+                        <i class="fa-brands fa-whatsapp"></i> Me interesa este modelo
                     </a>
                 </div>
             </div>
@@ -1170,7 +1152,6 @@
 
         <h3 class="brand-title reveal" style="margin-top: 4rem;"><i class="fa-solid fa-icicles"></i> Línea Ice-O-Matic</h3>
         <div class="grid-container">
-            <!-- Modelo MFI 500 -->
             <div class="card reveal">
                 <div class="card-img-wrapper">
                     <img src="img/MFI500.png" alt="Ice-O-Matic MFI 500" class="card-img" onerror="this.src='https://via.placeholder.com/300x250?text=MFI500'">
@@ -1189,7 +1170,6 @@
                 </div>
             </div>
 
-            <!-- Modelo MFI 800 -->
             <div class="card reveal">
                 <div class="card-img-wrapper">
                     <img src="img/MFI800.png" alt="Ice-O-Matic MFI 800" class="card-img" onerror="this.src='https://via.placeholder.com/300x250?text=MFI800'">
@@ -1210,7 +1190,6 @@
         </div>
     </section>
 
-    <!-- FINAL PREMIUM CTA BLOCK -->
     <section class="final-cta-section">
         <div class="cta-container reveal">
             <h2>¿Listo para producir tu propio hielo?</h2>
@@ -1230,92 +1209,79 @@
         </div>
     </section>
 
-    <!-- FOOTER CORPORATIVO -->
     <footer>
         <div class="footer-logo">Don Alex</div>
         <p>Soluciones de Frío e Ingeniería Comercial S.A.</p>
         <p>Todos los derechos reservados &copy; 2026 | Catálogo Oficial de Alta Conversión</p>
     </footer>
 
-    <!-- BOTÓN FLOTANTE WHATSAPP -->
     <a href="https://wa.me/50664701571?text=Hola%20Don%20Alex,%20estoy%20viendo%20el%20catálogo%20y%20necesito%20ayuda." class="whatsapp-float" target="_blank">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
-    <!-- LOGICA SCRIPT INTERACTIVA -->
     <script>
+        // Intersection Observer para animar el scroll
         const revealElements = document.querySelectorAll('.reveal');
-        
-        const revealCallback = (entries, observer) => {
+        const revealCallback = (entries) => {
             entries.forEach(entry => {
-                if(entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
+                if(entry.isIntersecting) entry.target.classList.add('active');
             });
         };
-
-        const revealOptions = {
-            threshold: 0.08,
-            rootMargin: "0px 0px -40px 0px"
-        };
-
-        const revealObserver = new IntersectionObserver(revealCallback, revealOptions);
+        const revealObserver = new IntersectionObserver(revealCallback, { threshold: 0.08, rootMargin: "0px 0px -40px 0px" });
         revealElements.forEach(el => revealObserver.observe(el));
 
+        // Dataset de Máquinas
         const catalogData = {
             "SCI-035": {
-                name: "AICETRO SCI-035", prod: "36 kg / 24h", price: "₡ 45,000",
-                img: "img/SCI-035.png", badge: "⭐ Recomendación ideal",
+                name: "AICETRO SCI-035", prod: "36 kg / 24h", price: "₡ 45,000", img: "img/SCI-035.png", badge: "⭐ Recomendación ideal",
                 desc: "Según el consumo indicado, recomendamos este modelo porque puede cubrir cómodamente la demanda diaria de tu negocio sin generar costos innecesarios de energía ni espacio."
             },
             "SCI-050": {
-                name: "AICETRO SCI-050", prod: "58 kg / 24h", price: "₡ 55,000",
-                img: "img/SCI-050.png", badge: "✅ Mejor relación capacidad/precio",
+                name: "AICETRO SCI-050", prod: "58 kg / 24h", price: "₡ 55,000", img: "img/SCI-050.png", badge: "✅ Mejor relación capacidad/precio",
                 desc: "Este equipo ofrece un balance extraordinario de almacenamiento. Es el modelo más rentable para flujos estables y constantes en negocios de comida."
             },
             "SCI-090": {
-                name: "AICETRO SCI-090", prod: "97 kg / 24h", price: "₡ 90,000",
-                img: "img/SCI-090.png", badge: "⭐ Recomendación ideal",
+                name: "AICETRO SCI-090", prod: "97 kg / 24h", price: "₡ 90,000", img: "img/SCI-090.png", badge: "⭐ Recomendación ideal",
                 desc: "Recomendamos este modelo industrial porque asegura un suministro abundante de casi 100 kilos diarios, cubriendo horas pico sin pausas operativas peligrosas."
             },
             "SCI-120A": {
-                name: "AICETRO SCI-120A", prod: "112 kg / 24h", price: "₡ 130,000",
-                img: "img/SCI-120A.png", badge: "🔥 El más solicitado",
+                name: "AICETRO SCI-120A", prod: "112 kg / 24h", price: "₡ 130,000", img: "img/SCI-120A.png", badge: "🔥 El más solicitado",
                 desc: "Diseñado específicamente para soportar demandas agresivas de hielo en entornos nocturnos y de coctelería masiva. Sólido y veloz."
             },
             "MFI500": {
-                name: "Ice-O-Matic MFI 500", prod: "245 kg / 24h", price: "₡ 130,000",
-                img: "img/MFI500.png", badge: "⚡ Rendimiento Avanzado",
+                name: "Ice-O-Matic MFI 500", prod: "245 kg / 24h", price: "₡ 130,000", img: "img/MFI500.png", badge: "⚡ Rendimiento Avanzado",
                 desc: "Con un almacenamiento imponente de 232 kg, esta unidad garantiza que tu barra nunca se quede vacía, optimizando cada metro cuadrado."
             },
             "IM-260AD": {
-                name: "AICETRO IM-260AD", prod: "272 kg / 24h", price: "₡ 180,000",
-                img: "img/IM-260AD.png", badge: "🚀 Máxima Capacidad de Almacenaje",
+                name: "AICETRO IM-260AD", prod: "272 kg / 24h", price: "₡ 180,000", img: "img/IM-260AD.png", badge: "🚀 Máxima Capacidad de Almacenaje",
                 desc: "Ideal para la conservación masiva en supermercados o pescaderías que requieren camas de hielo consistentes de alta durabilidad."
             },
             "MFI800": {
-                name: "Ice-O-Matic MFI 800", prod: "426 kg / 24h", price: "₡ 175,000",
-                img: "img/MFI800.png", badge: "💎 Rendimiento Comercial Premium",
+                name: "Ice-O-Matic MFI 800", prod: "426 kg / 24h", price: "₡ 175,000", img: "img/MFI800.png", badge: "💎 Rendimiento Comercial Premium",
                 desc: "Diseño americano de alta gama concebido para flujos de trabajo extremos. Una máquina indestructible que amortiza cada colón invertido."
             },
             "IM-500AD": {
-                name: "AICETRO IM-500AD", prod: "501 kg / 24h", price: "₡ 275,000",
-                img: "img/IM-500AD.png", badge: "👑 El Gigante Industrial",
+                name: "AICETRO IM-500AD", prod: "501 kg / 24h", price: "₡ 275,000", img: "img/IM-500AD.png", badge: "👑 El Gigante Industrial",
                 desc: "Produce media tonelada de hielo al día. Es la solución definitiva para complejos hoteleros que necesitan abastecer múltiples estaciones simultáneamente."
             }
         };
 
-        let isCalculating = false;
+        // Estado del Debounce
+        let calcTimeout = null;
         let isInitialLoad = true;
 
         function triggerCalculation() {
-            if (isCalculating) return; 
-            isCalculating = true;
+            // ARREGLO CRÍTICO: Si el usuario escribe rápido, abortamos el proceso anterior de inmediato
+            if (calcTimeout) {
+                clearTimeout(calcTimeout);
+            }
 
+            // Captura síncrona INMEDIATA de los valores actuales del DOM
             const bizType = document.getElementById('bizType').value;
             const kgInputRaw = document.getElementById('kgInput').value;
             let kg = parseInt(kgInputRaw);
 
+            // Cálculo predictivo basado en el perfil de negocio
             if (!kgInputRaw || isNaN(kg)) {
                 const baselines = {
                     'cafeteria': 35, 'restaurante': 85, 'bar': 140,
@@ -1324,6 +1290,7 @@
                 kg = baselines[bizType];
             }
 
+            // Clasificación lógica síncrona (Asegura exactitud matemática instantánea)
             let targetKey = "SCI-050";
             if (kg <= 36) targetKey = "SCI-035";
             else if (kg <= 58) targetKey = "SCI-050";
@@ -1341,20 +1308,18 @@
             if (isInitialLoad) {
                 updateCardData(model);
                 isInitialLoad = false;
-                isCalculating = false;
             } else {
+                // Iniciar estado estético de carga (Feedback Visual Premium)
                 contentDiv.classList.add('fade-out');
                 loadingDiv.classList.add('active');
 
-                setTimeout(() => {
+                // Encolar renderizado limpio (350ms de delay para un look fluido estilo Apple/Stripe)
+                calcTimeout = setTimeout(() => {
                     updateCardData(model);
                     loadingDiv.classList.remove('active');
-                    void contentDiv.offsetWidth; 
+                    void contentDiv.offsetWidth; // Forzar reflow del DOM
                     contentDiv.classList.remove('fade-out');
-                    
-                    setTimeout(() => { isCalculating = false; }, 400);
-
-                }, 450);
+                }, 350);
             }
         }
 
@@ -1371,6 +1336,7 @@
             document.getElementById('resWhatsapp').href = `https://wa.me/50664701571?text=${encodeURIComponent(msg)}`;
         }
 
+        // Ejecución inmediata al inicializar el árbol de nodos
         window.onload = triggerCalculation;
     </script>
 </body>
